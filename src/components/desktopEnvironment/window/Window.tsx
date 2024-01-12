@@ -18,7 +18,7 @@ type Program = {
     content: ReactNode;
     buttonSet: ButtonSet;
     icon: Icon;
-    props?: Rnd;
+    props?: Record<string, any>;
 };
 
 type WindowProps = {
@@ -43,13 +43,17 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
         minimize: () => console.log('minimize')
     };
 
+    const windowProps = program.props ?? {};
+    windowProps.minWidth = Math.max(150, windowProps.minWidth ?? 0);
+    windowProps.minHeight = Math.max(42, windowProps.minHeight ?? 0);
+
     return (
         <Rnd
             dragHandleClassName={dragHandleClassName}
             bounds='parent'
             onMouseDown={focus}
             onResizeStart={focus}
-            {...program.props}
+            {...windowProps}
         >
             <div className='h-full w-full flex flex-col border-black border drop-shadow-window'>
                 <TitleBar
