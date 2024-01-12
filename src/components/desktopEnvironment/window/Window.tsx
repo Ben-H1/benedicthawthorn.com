@@ -18,6 +18,7 @@ type Program = {
     content: ReactNode;
     buttonSet: ButtonSet;
     icon: Icon;
+    props?: Rnd;
 };
 
 type WindowProps = {
@@ -27,7 +28,7 @@ type WindowProps = {
     closeProgram: (id: string) => void;
 };
 
-const Window = ({ program, isActive, focusProgram, closeProgram, ...props }: WindowProps) => {
+const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) => {
     const dragHandleClassName = 'dragHandle';
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,7 +49,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, ...props }: Win
             bounds='parent'
             onMouseDown={focus}
             onResizeStart={focus}
-            {...props}
+            {...program.props}
         >
             <div className='h-full w-full flex flex-col border-black border drop-shadow-window'>
                 <TitleBar
