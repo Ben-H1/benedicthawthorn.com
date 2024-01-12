@@ -7,8 +7,10 @@ import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
 type Icon = {
     icon: IconProp;
     position: {
-        top: number;
-        left: number;
+        top?: number;
+        left?: number;
+        right?: number;
+        bottom?: number;
     };
 };
 
