@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Window from './window/Window';
+import Window, { Program } from './window/Window';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ButtonSet } from './window/TitleBarButtons';
 import DesktopIcon from './DesktopIcon';
 
 const DesktopEnvironment = () => {
-    const programs = [
+    const programs: Program[] = [
         {
             id: 'test',
             name: 'Test Program',
