@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
@@ -25,17 +25,20 @@ type Program = {
 type WindowProps = {
     program: Program;
     isActive: boolean;
-    focusProgram: (id: string) => void;
+    focusProgram: (id: string) => number;
     closeProgram: (id: string) => void;
 };
 
 const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) => {
     const dragHandleClassName = 'dragHandle';
+    const [zIndex, setZIndex] = useState(0);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const focus = (e?: any) => {
         e?.stopPropagation();
-        focusProgram(program.id);
+
+        const newZIndex = focusProgram(program.id);
+        setZIndex(newZIndex);
     };
 
     const buttonFunctions: ButtonFunctions = {
@@ -54,6 +57,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
             bounds='parent'
             onMouseDown={focus}
             onResizeStart={focus}
+            style={{ zIndex }}
             {...windowProps}
         >
             <div className='h-full w-full flex flex-col border-black border drop-shadow-window'>

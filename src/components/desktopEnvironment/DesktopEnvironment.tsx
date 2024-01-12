@@ -17,12 +17,26 @@ const DesktopEnvironment = () => {
                     left: 50
                 }
             }
+        },
+        {
+            id: 'test2',
+            name: 'Test Program 2',
+            content: (<>hello 2</>),
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: faInfoCircle,
+                position: {
+                    top: 50,
+                    left: 50
+                }
+            }
         }
     ];
 
     const [activeIconId, setActiveIconId] = useState<string>('');
     const [activeProgramId, setActiveProgramId] = useState<string>('');
-    const [openProgramIds, setOpenProgramIds] = useState<string[]>(['test']);
+    const [openProgramIds, setOpenProgramIds] = useState<string[]>(['test', 'test2']);
+    const [highestZIndex, setHighestZIndex] = useState<number>(0);
 
     const focusIcon = (programId: string) => {
         setActiveIconId(programId);
@@ -43,6 +57,11 @@ const DesktopEnvironment = () => {
     const focusProgram = (programId: string) => {
         setActiveIconId('');
         setActiveProgramId(programId);
+
+        const newZIndex = highestZIndex + 1;
+        setHighestZIndex(newZIndex);
+
+        return newZIndex;
     };
 
     const closeProgram = (programId: string) => {
