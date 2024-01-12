@@ -1,7 +1,8 @@
+import DesktopEnvironment from '@components/DesktopEnvironment';
+
 const App = () => {
     return (
-        <>
-        </>
+        <DesktopEnvironment />
     );
 };
 
