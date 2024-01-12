@@ -12,7 +12,7 @@ type Icon = {
     };
 };
 
-type Program = {
+export type Program = {
     id: string;
     name: string;
     content: ReactNode;

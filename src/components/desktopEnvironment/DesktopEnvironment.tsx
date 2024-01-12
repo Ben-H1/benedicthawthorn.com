@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Window from './window/Window';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ButtonSet } from './window/TitleBarButtons';
+import DesktopIcon from './DesktopIcon';
 
 const DesktopEnvironment = () => {
     const programs = [
@@ -17,25 +18,12 @@ const DesktopEnvironment = () => {
                     left: 50
                 }
             }
-        },
-        {
-            id: 'test2',
-            name: 'Test Program 2',
-            content: (<>hello 2</>),
-            buttonSet: ButtonSet.CLOSE,
-            icon: {
-                icon: faInfoCircle,
-                position: {
-                    top: 50,
-                    left: 50
-                }
-            }
         }
     ];
 
     const [activeIconId, setActiveIconId] = useState<string>('');
     const [activeProgramId, setActiveProgramId] = useState<string>('');
-    const [openProgramIds, setOpenProgramIds] = useState<string[]>(['test', 'test2']);
+    const [openProgramIds, setOpenProgramIds] = useState<string[]>([]);
     const [highestZIndex, setHighestZIndex] = useState<number>(0);
 
     const focusIcon = (programId: string) => {
@@ -79,6 +67,15 @@ const DesktopEnvironment = () => {
             onMouseDown={focusNone}
         >
             <div className='bg-gray-300 flex-1'>
+                {programs.map((program) => (
+                    <DesktopIcon
+                        key={`desktopIcon-${program.id}`}
+                        program={program}
+                        isActive={activeIconId === program.id}
+                        focusIcon={focusIcon}
+                        openProgram={openProgram}
+                    />
+                ))}
                 {openProgramIds.map((programId) => (
                     <Window
                         key={`window-${programId}`}
