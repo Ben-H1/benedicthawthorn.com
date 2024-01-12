@@ -55,25 +55,23 @@ const getButtonTypes = (buttonSet: ButtonSet) => ({
     ]
 })[buttonSet];
 
-const getButtonSet = (buttonSet: ButtonSet, buttonFunctions: ButtonFunctions) => {
-    const buttonTypes = getButtonTypes(buttonSet);
-
-    return buttonTypes.map((buttonType) => (
-        <TitleBarButton icon={buttonIcons[buttonType]} onClick={buttonFunctions[buttonType]} />
-    ));
-};
-
 type TitleBarButtonsProps = {
     buttonSet: ButtonSet;
     buttonFunctions: ButtonFunctions;
 };
 
 const TitleBarButtons = ({ buttonSet, buttonFunctions }: TitleBarButtonsProps) => {
-    const buttonComponents = getButtonSet(buttonSet, buttonFunctions);
+    const buttonTypes = getButtonTypes(buttonSet);
 
     return (
         <div className='flex space-x-1'>
-            {...buttonComponents}
+            {buttonTypes.map((buttonType) => (
+                <TitleBarButton
+                    key={`titleBarButton-${buttonType}`}
+                    icon={buttonIcons[buttonType]}
+                    onClick={buttonFunctions[buttonType]}
+                />
+            ))}
         </div>
     );
 };
