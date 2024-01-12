@@ -18,6 +18,7 @@ type Program = {
     content: ReactNode;
     buttonSet: ButtonSet;
     icon: Icon;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: Record<string, any>;
 };
 
