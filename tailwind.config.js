@@ -5,6 +5,9 @@ export default {
         extend: {
             fontFamily: {
                 'chicago': ['Chicago']
+            },
+            dropShadow: {
+                window: '5px 5px 0 rgba(0, 0, 0, 0.25)'
             }
         }
     },
