@@ -24,7 +24,7 @@ type TitleBarButtonProps = {
 const TitleBarButton = ({ icon, onClick }: TitleBarButtonProps) => {
     return (
         <div
-            className='h-4 w-4 p-px border-black border flex items-center justify-center'
+            className='h-4 w-4 p-px border-black border flex items-center justify-center active:bg-gray-300'
             onClick={onClick}
         >
             <FontAwesomeIcon icon={icon} className='h-full w-full' />
