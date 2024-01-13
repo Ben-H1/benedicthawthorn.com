@@ -70,7 +70,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
                     buttonFunctions={buttonFunctions}
                     dragHandleClassName={dragHandleClassName}
                 />
-                <div className='bg-white flex-1 p-2 overflow-auto'>{program.content}</div>
+                <div className='bg-white flex-1 p-2 overflow-auto scrollbar'>{program.content}</div>
             </div>
         </Rnd>
     );
