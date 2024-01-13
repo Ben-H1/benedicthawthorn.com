@@ -7,4 +7,8 @@
         font-family: Chicago;
         src: url('./assets/fonts/Chicago.ttf')
     }
+    @font-face {
+        font-family: Apple Garamond;
+        src: url('./assets/fonts/Apple Garamond.ttf');
+    }
 }

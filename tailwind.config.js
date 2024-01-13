@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'chicago': ['Chicago']
+                'chicago': ['Chicago'],
+                'appleGaramond': ['Apple Garamond']
             },
             dropShadow: {
                 window: '5px 5px 0 rgba(0, 0, 0, 0.25)'
