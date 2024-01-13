@@ -18,7 +18,11 @@ const Link = ({ link, openInNewTab, children }: LinkProps) => {
         >
             {children}
             {openInNewTab && (
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='xs' className='ml-2' />
+                <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    size='xs'
+                    className='ml-2'
+                />
             )}
         </a>
     );
