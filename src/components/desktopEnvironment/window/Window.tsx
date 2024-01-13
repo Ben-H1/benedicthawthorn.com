@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
@@ -42,6 +42,9 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
         const newZIndex = focusProgram(program.id);
         setZIndex(newZIndex);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(focus, []);
 
     const buttonFunctions: ButtonFunctions = {
         close: () => closeProgram(program.id),

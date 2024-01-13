@@ -38,7 +38,6 @@ const DesktopEnvironment = () => {
             focusProgram(programId);
         } else {
             setOpenProgramIds(p => [...p, programId]);
-            focusProgram(programId);
         }
     };
 
