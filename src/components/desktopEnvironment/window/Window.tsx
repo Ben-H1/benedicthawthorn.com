@@ -57,17 +57,22 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
     windowProps.minWidth = Math.max(150, windowProps.minWidth ?? 0);
     windowProps.minHeight = Math.max(42, windowProps.minHeight ?? 0);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const maximizedProps: any = {};
+    if (isMaximized) {
+        maximizedProps.size = { width: '100%', height: '100%' };
+        maximizedProps.position = { x: 0, y: 0 };
+    }
+
     return (
         <Rnd
             dragHandleClassName={dragHandleClassName}
             bounds='parent'
             onMouseDown={focus}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onResizeStart={(e: any) => {
-                focus(e);
-                setIsMaximized(false);
-            }}
+            onResizeStart={focus}
+            enableResizing={!isMaximized}
             style={{ zIndex }}
+            {...maximizedProps}
             {...windowProps}
         >
             <div className='h-full w-full flex flex-col border-black border drop-shadow-window'>
