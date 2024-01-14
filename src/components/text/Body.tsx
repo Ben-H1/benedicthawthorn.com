@@ -6,9 +6,12 @@ type BodyProps = {
     children: ReactNode;
 };
 
-const Body = ({ className, children }: BodyProps) => {
+const Body = ({ className, children, ...props }: BodyProps) => {
     return (
-        <p className={cn('font-serif text-lg', className)} >
+        <p
+            className={cn('font-serif text-lg', className)}
+            {...props}
+        >
             {children}
         </p>
     );

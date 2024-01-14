@@ -6,9 +6,12 @@ type H2Props = {
     children: ReactNode;
 };
 
-const H2 = ({ className, children }: H2Props) => {
+const H2 = ({ className, children, ...props }: H2Props) => {
     return (
-        <h2 className={cn('font-appleGaramond text-4xl', className)} >
+        <h2
+            className={cn('font-appleGaramond text-4xl', className)}
+            {...props}
+        >
             {children}
         </h2>
     );

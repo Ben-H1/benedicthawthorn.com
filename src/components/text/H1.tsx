@@ -6,9 +6,12 @@ type H1Props = {
     children: ReactNode;
 };
 
-const H1 = ({ className, children }: H1Props) => {
+const H1 = ({ className, children, ...props }: H1Props) => {
     return (
-        <h1 className={cn('font-appleGaramond text-5xl', className)} >
+        <h1
+            className={cn('font-appleGaramond text-5xl', className)}
+            {...props}
+        >
             {children}
         </h1>
     );
