@@ -1,5 +1,4 @@
 import UnderConstruction from '@components/programs/UnderConstruction';
-import { faDiagramProject, faIdCard, faInfoCircle, faMusic } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
@@ -13,7 +12,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: faInfoCircle,
+                icon: 'src/assets/images/book-help.png',
                 position: {
                     top: 20,
                     left: 20
@@ -27,7 +26,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: faIdCard,
+                icon: 'src/assets/images/email.png',
                 position: {
                     top: 116,
                     left: 20
@@ -41,7 +40,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: faDiagramProject,
+                icon: 'src/assets/images/tools.png',
                 position: {
                     top: 212,
                     left: 20
@@ -55,7 +54,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: faMusic,
+                icon: 'src/assets/images/cd-music.png',
                 position: {
                     top: 308,
                     left: 20
