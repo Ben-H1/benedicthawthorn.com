@@ -13,6 +13,7 @@ enum ButtonType {
 export enum ButtonSet {
     'CLOSE' = 'close',
     'MINCLOSE' = 'minClose',
+    'MAXCLOSE' = 'maxClose',
     'MINMAXCLOSE' = 'minMaxClose'
 }
 
@@ -48,6 +49,10 @@ const getButtonTypes = (buttonSet: ButtonSet) => ({
     ],
     [ButtonSet.MINCLOSE]: [
         ButtonType.MINIMIZE,
+        ButtonType.CLOSE
+    ],
+    [ButtonSet.MAXCLOSE]: [
+        ButtonType.MAXIMIZE,
         ButtonType.CLOSE
     ],
     [ButtonSet.MINMAXCLOSE]: [
