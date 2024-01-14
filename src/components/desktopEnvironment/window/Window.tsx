@@ -62,7 +62,11 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
             dragHandleClassName={dragHandleClassName}
             bounds='parent'
             onMouseDown={focus}
-            onResizeStart={focus}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onResizeStart={(e: any) => {
+                focus(e);
+                setIsMaximized(false);
+            }}
             style={{ zIndex }}
             {...windowProps}
         >
