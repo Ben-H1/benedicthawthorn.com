@@ -37,7 +37,7 @@ export type ButtonFunctions = Record<ButtonType, () => void>;
 const getButtonIcons = (buttonType: ButtonType, isMaximized: boolean) => {
     return ({
         [ButtonType.CLOSE]: faXmark,
-        [ButtonType.MAXIMIZE]: isMaximized ? faWindowMaximize : faWindowRestore,
+        [ButtonType.MAXIMIZE]: isMaximized ? faWindowRestore: faWindowMaximize,
         [ButtonType.MINIMIZE]: faWindowMinimize
     })[buttonType];
 };
