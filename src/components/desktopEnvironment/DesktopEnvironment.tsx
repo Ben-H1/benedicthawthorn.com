@@ -65,7 +65,7 @@ const DesktopEnvironment = () => {
             className='h-screen flex flex-col overflow-hidden relative font-chicago text-sm'
             onMouseDown={focusNone}
         >
-            <div className='bg-gray-300 flex-1'>
+            <div className='bg-gray-300 flex-1 relative'>
                 {programs.map((program) => (
                     <DesktopIcon
                         key={`desktopIcon-${program.id}`}
