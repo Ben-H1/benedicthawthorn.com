@@ -5,12 +5,13 @@ import TitleBarButtons, { ButtonFunctions, ButtonSet } from './TitleBarButtons';
 type TitleBarProps = {
     name: string;
     isActive: boolean;
+    isMaximized: boolean;
     buttonSet: ButtonSet;
     buttonFunctions: ButtonFunctions;
     dragHandleClassName: string;
 };
 
-const TitleBar = ({ name, isActive, buttonSet, buttonFunctions, dragHandleClassName }: TitleBarProps) => {
+const TitleBar = ({ name, isActive, isMaximized, buttonSet, buttonFunctions, dragHandleClassName }: TitleBarProps) => {
     return (
         <div className='bg-white h-6 shrink-0 flex items-center px-2 space-x-2 border-b-black border-b'>
             <div className={cn('flex truncate flex-1 select-none space-x-2', dragHandleClassName)}>
@@ -18,7 +19,7 @@ const TitleBar = ({ name, isActive, buttonSet, buttonFunctions, dragHandleClassN
                 <div className='truncate'>{name}</div>
                 <TitleBarLines isActive={isActive} />
             </div>
-            <TitleBarButtons buttonSet={buttonSet} buttonFunctions={buttonFunctions} />
+            <TitleBarButtons isMaximized={isMaximized} buttonSet={buttonSet} buttonFunctions={buttonFunctions} />
         </div>
     );
 };

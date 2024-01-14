@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faWindowMaximize } from '@fortawesome/free-regular-svg-icons';
+import { faWindowMaximize, faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 import { faWindowMinimize, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MouseEventHandler } from 'react';
@@ -34,10 +34,12 @@ const TitleBarButton = ({ icon, onClick }: TitleBarButtonProps) => {
 
 export type ButtonFunctions = Record<ButtonType, () => void>;
 
-const buttonIcons = {
-    [ButtonType.CLOSE]: faXmark,
-    [ButtonType.MAXIMIZE]: faWindowMaximize,
-    [ButtonType.MINIMIZE]: faWindowMinimize
+const getButtonIcons = (buttonType: ButtonType, isMaximized: boolean) => {
+    return ({
+        [ButtonType.CLOSE]: faXmark,
+        [ButtonType.MAXIMIZE]: isMaximized ? faWindowMaximize : faWindowRestore,
+        [ButtonType.MINIMIZE]: faWindowMinimize
+    })[buttonType];
 };
 
 const getButtonTypes = (buttonSet: ButtonSet) => ({
@@ -56,11 +58,12 @@ const getButtonTypes = (buttonSet: ButtonSet) => ({
 })[buttonSet];
 
 type TitleBarButtonsProps = {
+    isMaximized: boolean;
     buttonSet: ButtonSet;
     buttonFunctions: ButtonFunctions;
 };
 
-const TitleBarButtons = ({ buttonSet, buttonFunctions }: TitleBarButtonsProps) => {
+const TitleBarButtons = ({ isMaximized, buttonSet, buttonFunctions }: TitleBarButtonsProps) => {
     const buttonTypes = getButtonTypes(buttonSet);
 
     return (
@@ -68,7 +71,7 @@ const TitleBarButtons = ({ buttonSet, buttonFunctions }: TitleBarButtonsProps) =
             {buttonTypes.map((buttonType) => (
                 <TitleBarButton
                     key={`titleBarButton-${buttonType}`}
-                    icon={buttonIcons[buttonType]}
+                    icon={getButtonIcons(buttonType, isMaximized)}
                     onClick={buttonFunctions[buttonType]}
                 />
             ))}

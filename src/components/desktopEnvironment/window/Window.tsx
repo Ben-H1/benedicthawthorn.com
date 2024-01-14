@@ -34,6 +34,7 @@ type WindowProps = {
 const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) => {
     const dragHandleClassName = 'dragHandle';
     const [zIndex, setZIndex] = useState(0);
+    const [isMaximized, setIsMaximized] = useState(false);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const focus = (e?: any) => {
@@ -48,7 +49,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
 
     const buttonFunctions: ButtonFunctions = {
         close: () => closeProgram(program.id),
-        maximize: () => console.log('maximize'),
+        maximize: () => setIsMaximized(p => !p),
         minimize: () => console.log('minimize')
     };
 
@@ -69,6 +70,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
                 <TitleBar
                     name={program.name}
                     isActive={isActive}
+                    isMaximized={isMaximized}
                     buttonSet={program.buttonSet}
                     buttonFunctions={buttonFunctions}
                     dragHandleClassName={dragHandleClassName}
