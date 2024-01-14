@@ -7,34 +7,6 @@ import Window, { Program } from './window/Window';
 const DesktopEnvironment = () => {
     const programs: Program[] = [
         {
-            id: 'aboutMe',
-            name: 'About Me',
-            content: <UnderConstruction />,
-            buttonSet: ButtonSet.CLOSE,
-            icon: {
-                icon: 'src/assets/images/book-help.png',
-                position: {
-                    top: 20,
-                    left: 20
-                }
-            },
-            props: { enableResizing: false }
-        },
-        {
-            id: 'contactMe',
-            name: 'Contact Me',
-            content: <UnderConstruction />,
-            buttonSet: ButtonSet.CLOSE,
-            icon: {
-                icon: 'src/assets/images/email.png',
-                position: {
-                    top: 116,
-                    left: 20
-                }
-            },
-            props: { enableResizing: false }
-        },
-        {
             id: 'myProjects',
             name: 'My Projects',
             content: <UnderConstruction />,
@@ -42,7 +14,7 @@ const DesktopEnvironment = () => {
             icon: {
                 icon: 'src/assets/images/tools.png',
                 position: {
-                    top: 212,
+                    top: 20,
                     left: 20
                 }
             },
@@ -55,6 +27,34 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/cd-music.png',
+                position: {
+                    top: 116,
+                    left: 20
+                }
+            },
+            props: { enableResizing: false }
+        },
+        {
+            id: 'aboutMe',
+            name: 'About Me',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: 'src/assets/images/book-help.png',
+                position: {
+                    top: 212,
+                    left: 20
+                }
+            },
+            props: { enableResizing: false }
+        },
+        {
+            id: 'contactMe',
+            name: 'Contact Me',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: 'src/assets/images/email.png',
                 position: {
                     top: 308,
                     left: 20
