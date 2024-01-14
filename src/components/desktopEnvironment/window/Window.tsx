@@ -5,7 +5,7 @@ import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
 
 type Icon = {
-    icon: IconProp;
+    icon: IconProp | string;
     position: {
         top?: number;
         left?: number;

@@ -25,7 +25,11 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
                 className='flex flex-col items-center justify-center select-none space-y-2'
                 onClick={clickHandler}
             >
-                <div><FontAwesomeIcon icon={program.icon.icon} size='2xl' /></div>
+                {(typeof program.icon.icon === 'string') ? (
+                    <img src={program.icon.icon}></img>
+                ) : (
+                    <FontAwesomeIcon icon={program.icon.icon} size='2xl' />
+                )}
                 <div className={cn('px-1 text-center', isActive && 'text-white bg-black')}>{program.name}</div>
             </div>
         </div>
