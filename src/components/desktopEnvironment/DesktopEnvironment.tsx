@@ -1,23 +1,39 @@
+import UnderConstruction from '@components/programs/UnderConstruction';
+import { faIdCard, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import Window, { Program } from './window/Window';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { ButtonSet } from './window/TitleBarButtons';
 import DesktopIcon from './DesktopIcon';
+import { ButtonSet } from './window/TitleBarButtons';
+import Window, { Program } from './window/Window';
 
 const DesktopEnvironment = () => {
     const programs: Program[] = [
         {
-            id: 'test',
-            name: 'Test Program',
-            content: (<>hello</>),
+            id: 'aboutMe',
+            name: 'About Me',
+            content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: faInfoCircle,
                 position: {
-                    top: 10,
-                    left: 10
+                    top: 20,
+                    left: 20
                 }
-            }
+            },
+            props: { enableResizing: false }
+        },
+        {
+            id: 'contactMe',
+            name: 'Contact Me',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: faIdCard,
+                position: {
+                    top: 116,
+                    left: 20
+                }
+            },
+            props: { enableResizing: false }
         }
     ];
 
