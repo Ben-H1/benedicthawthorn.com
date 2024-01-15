@@ -2,7 +2,13 @@ import DesktopEnvironment from '@components/desktopEnvironment/DesktopEnvironmen
 
 const App = () => {
     return (
-        <DesktopEnvironment />
+        <>
+            <div className='absolute text-transparent select-none pointer-events-none'>
+                <p className='font-chicago'>.</p>
+                <p className='font-appleGaramond'>.</p>
+            </div>
+            <DesktopEnvironment />
+        </>
     );
 };
 
