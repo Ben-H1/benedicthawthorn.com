@@ -104,6 +104,20 @@ const DesktopEnvironment = () => {
             props: { enableResizing: false }
         },
         {
+            id: 'aboutWebsite',
+            name: 'About Website',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: 'src/assets/images/internet.png',
+                position: {
+                    top: 404,
+                    left: 20
+                }
+            },
+            props: { enableResizing: false }
+        },
+        {
             id: 'emailMe',
             name: 'Email Me',
             content: <EmailMe />,
