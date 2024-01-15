@@ -5,6 +5,45 @@ import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
 
 const DesktopEnvironment = () => {
+    const [activeIconId, setActiveIconId] = useState<string>('');
+    const [activeProgramId, setActiveProgramId] = useState<string>('');
+    const [openProgramIds, setOpenProgramIds] = useState<string[]>([]);
+    const [highestZIndex, setHighestZIndex] = useState<number>(0);
+
+    const focusIcon = (programId: string) => {
+        setActiveIconId(programId);
+        setActiveProgramId('');
+    };
+
+    const openProgram = (programId: string) => {
+        setActiveIconId('');
+
+        if (openProgramIds.includes(programId)) {
+            focusProgram(programId);
+        } else {
+            setOpenProgramIds(p => [...p, programId]);
+        }
+    };
+
+    const focusProgram = (programId: string) => {
+        setActiveIconId('');
+        setActiveProgramId(programId);
+
+        const newZIndex = highestZIndex + 1;
+        setHighestZIndex(newZIndex);
+
+        return newZIndex;
+    };
+
+    const closeProgram = (programId: string) => {
+        setOpenProgramIds(p => p.filter(id => id !== programId));
+    };
+
+    const focusNone = () => {
+        setActiveIconId('');
+        setActiveProgramId('');
+    };
+
     const programs: Program[] = [
         {
             id: 'myProjects',
@@ -63,45 +102,6 @@ const DesktopEnvironment = () => {
             props: { enableResizing: false }
         }
     ];
-
-    const [activeIconId, setActiveIconId] = useState<string>('');
-    const [activeProgramId, setActiveProgramId] = useState<string>('');
-    const [openProgramIds, setOpenProgramIds] = useState<string[]>([]);
-    const [highestZIndex, setHighestZIndex] = useState<number>(0);
-
-    const focusIcon = (programId: string) => {
-        setActiveIconId(programId);
-        setActiveProgramId('');
-    };
-
-    const openProgram = (programId: string) => {
-        setActiveIconId('');
-
-        if (openProgramIds.includes(programId)) {
-            focusProgram(programId);
-        } else {
-            setOpenProgramIds(p => [...p, programId]);
-        }
-    };
-
-    const focusProgram = (programId: string) => {
-        setActiveIconId('');
-        setActiveProgramId(programId);
-
-        const newZIndex = highestZIndex + 1;
-        setHighestZIndex(newZIndex);
-
-        return newZIndex;
-    };
-
-    const closeProgram = (programId: string) => {
-        setOpenProgramIds(p => p.filter(id => id !== programId));
-    };
-
-    const focusNone = () => {
-        setActiveIconId('');
-        setActiveProgramId('');
-    };
 
     return (
         <div
