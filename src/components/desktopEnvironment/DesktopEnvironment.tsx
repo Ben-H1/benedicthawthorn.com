@@ -100,6 +100,12 @@ const DesktopEnvironment = () => {
                 }
             },
             props: { enableResizing: false }
+        },
+        {
+            id: 'emailMe',
+            name: 'Email Me',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE
         }
     ];
 
