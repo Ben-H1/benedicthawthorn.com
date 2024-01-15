@@ -6,11 +6,10 @@ type BodyProps = {
     children: ReactNode;
 };
 
-const Body = ({ className, children, ...props }: BodyProps) => {
+const Body = ({ className, children }: BodyProps) => {
     return (
         <p
             className={cn('font-serif text-lg', className)}
-            {...props}
         >
             {children}
         </p>
