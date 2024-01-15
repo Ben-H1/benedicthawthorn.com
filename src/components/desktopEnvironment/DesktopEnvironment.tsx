@@ -4,6 +4,7 @@ import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
 import ContactMe from '@components/programs/ContactMe';
+import EmailMe from '@components/programs/EmailMe';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -105,8 +106,9 @@ const DesktopEnvironment = () => {
         {
             id: 'emailMe',
             name: 'Email Me',
-            content: <UnderConstruction />,
-            buttonSet: ButtonSet.CLOSE
+            content: <EmailMe />,
+            buttonSet: ButtonSet.CLOSE,
+            props: { minWidth: 266, minHeight: 484 }
         }
     ];
 
