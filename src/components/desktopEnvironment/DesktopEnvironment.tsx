@@ -9,7 +9,7 @@ import EmailMe from '@components/programs/EmailMe';
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
     const [activeProgramId, setActiveProgramId] = useState<string>('');
-    const [openProgramIds, setOpenProgramIds] = useState<string[]>([]);
+    const [openProgramIds, setOpenProgramIds] = useState<string[]>(['welcome']);
     const [highestZIndex, setHighestZIndex] = useState<number>(0);
 
     const focusIcon = (programId: string) => {
@@ -123,6 +123,12 @@ const DesktopEnvironment = () => {
             content: <EmailMe />,
             buttonSet: ButtonSet.CLOSE,
             props: { minWidth: 266, minHeight: 484 }
+        },
+        {
+            id: 'welcome',
+            name: 'Welcome',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE
         }
     ];
 
