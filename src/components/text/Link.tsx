@@ -6,17 +6,18 @@ import { MouseEventHandler, ReactNode } from 'react';
 type LinkProps = {
     link?: string;
     openInNewTab?: boolean;
-    className?: string;
     onClick?: MouseEventHandler;
+    className?: string;
     children: ReactNode;
 };
 
-const Link = ({ link, openInNewTab, className, children }: LinkProps) => {
+const Link = ({ link, openInNewTab, onClick, className, children }: LinkProps) => {
     return (
         <a
             href={link}
             target={openInNewTab ? '_blank' : undefined}
             rel='noreferrer noopener'
+            onClick={onClick}
             className={cn('text-indigo-800 hover:underline flex items-center cursor-pointer', className)}
         >
             {children}
