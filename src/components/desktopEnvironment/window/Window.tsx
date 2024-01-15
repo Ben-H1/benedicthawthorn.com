@@ -36,6 +36,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
     const dragHandleClassName = 'dragHandle';
     const [zIndex, setZIndex] = useState(0);
     const [isMaximized, setIsMaximized] = useState(false);
+    const [position, setPosition] = useState<{ x: number, y: number }>();
 
     const rndRef = useRef<Rnd>(null);
     const windowRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
 
             rndRef.current?.updatePosition({ x, y });
+            setPosition({ x, y });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -79,7 +81,15 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
 
     const buttonFunctions: ButtonFunctions = {
         close: () => closeProgram(program.id),
-        maximize: () => setIsMaximized(p => !p),
+        maximize: () => {
+            const nextValue = !isMaximized;
+
+            if (!nextValue) {
+                rndRef.current?.updatePosition(position!);
+            }
+
+            setIsMaximized(nextValue);
+        },
         minimize: () => console.log('minimize')
     };
 
@@ -101,6 +111,8 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             ref={rndRef}
             onMouseDown={focus}
             onResizeStart={focus}
+            onResizeStop={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
+            onDragStop={(_, d) => setPosition({ x: d.x, y: d.y })}
             enableResizing={!isMaximized}
             style={{ zIndex }}
             {...maximizedProps}
