@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
+import ContactMe from '@components/programs/ContactMe';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -90,7 +91,7 @@ const DesktopEnvironment = () => {
         {
             id: 'contactMe',
             name: 'Contact Me',
-            content: <UnderConstruction />,
+            content: <ContactMe openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/email.png',
