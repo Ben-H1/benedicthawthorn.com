@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
@@ -29,12 +29,37 @@ type WindowProps = {
     isActive: boolean;
     focusProgram: (id: string) => number;
     closeProgram: (id: string) => void;
+    desktopRef: RefObject<HTMLDivElement>;
 };
 
-const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) => {
+const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: WindowProps) => {
     const dragHandleClassName = 'dragHandle';
     const [zIndex, setZIndex] = useState(0);
     const [isMaximized, setIsMaximized] = useState(false);
+
+    const rndRef = useRef<Rnd>(null);
+    const windowRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const desktopWidth = desktopRef.current?.clientWidth;
+        const desktopHeight = desktopRef.current?.clientHeight;
+
+        const windowWidth = windowRef.current?.clientWidth;
+        const windowHeight = windowRef.current?.clientHeight;
+
+        if (
+            desktopWidth !== undefined &&
+            desktopHeight !== undefined &&
+            windowWidth !== undefined &&
+            windowHeight !== undefined
+        ) {
+            const x = Math.floor(desktopWidth / 2 - windowWidth / 2);
+            const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
+
+            rndRef.current?.updatePosition({ x, y });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const focus = (e?: any, updateZIndex = true) => {
@@ -73,6 +98,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
         <Rnd
             dragHandleClassName={dragHandleClassName}
             bounds='parent'
+            ref={rndRef}
             onMouseDown={focus}
             onResizeStart={focus}
             enableResizing={!isMaximized}
@@ -80,7 +106,10 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
             {...maximizedProps}
             {...windowProps}
         >
-            <div className='h-full w-full flex flex-col border-black border drop-shadow-window'>
+            <div
+                ref={windowRef}
+                className='h-full w-full flex flex-col border-black border drop-shadow-window'
+            >
                 <TitleBar
                     name={program.name}
                     isActive={isActive}

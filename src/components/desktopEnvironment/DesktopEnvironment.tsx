@@ -1,5 +1,5 @@
 import UnderConstruction from '@components/programs/UnderConstruction';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
@@ -109,12 +109,17 @@ const DesktopEnvironment = () => {
         }
     ];
 
+    const desktopRef = useRef(null);
+
     return (
         <div
             className='h-screen flex flex-col overflow-hidden relative font-chicago text-sm'
             onMouseDown={focusNone}
         >
-            <div className='bg-gray-300 flex-1 relative'>
+            <div
+                ref={desktopRef}
+                className='bg-gray-300 flex-1 relative'
+            >
                 {programs.filter(p => !!p.icon).map((program) => (
                     <DesktopIcon
                         key={`desktopIcon-${program.id}`}
@@ -131,6 +136,7 @@ const DesktopEnvironment = () => {
                         isActive={activeProgramId === programId}
                         focusProgram={focusProgram}
                         closeProgram={closeProgram}
+                        desktopRef={desktopRef}
                     />
                 ))}
             </div>
