@@ -5,11 +5,11 @@
 @layer base {
     @font-face {
         font-family: Chicago;
-        src: url('./assets/fonts/Chicago.ttf')
+        src: url('./assets/fonts/Chicago.woff2') format('woff2');
     }
     @font-face {
         font-family: Apple Garamond;
-        src: url('./assets/fonts/Apple Garamond.ttf');
+        src: url('./assets/fonts/Apple Garamond.woff2') format('woff2');
     }
 }
 
