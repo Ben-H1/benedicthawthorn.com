@@ -20,15 +20,15 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
     };
 
     return (
-        <div className='flex absolute items-center justify-center w-24 h-24' style={{ ...program.icon.position }}>
+        <div className='flex absolute items-center justify-center w-24 h-24' style={{ ...program.icon!.position }}>
             <div
                 className='flex flex-col items-center justify-center select-none space-y-2'
                 onClick={clickHandler}
             >
-                {(typeof program.icon.icon === 'string') ? (
-                    <img src={program.icon.icon}></img>
+                {(typeof program.icon!.icon === 'string') ? (
+                    <img src={program.icon!.icon}></img>
                 ) : (
-                    <FontAwesomeIcon icon={program.icon.icon} size='2xl' />
+                    <FontAwesomeIcon icon={program.icon!.icon} size='2xl' />
                 )}
                 <div className={cn('px-1 text-center', isActive && 'text-white bg-black')}>{program.name}</div>
             </div>

@@ -19,7 +19,7 @@ export type Program = {
     name: string;
     content: ReactNode;
     buttonSet: ButtonSet;
-    icon: Icon;
+    icon?: Icon;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: Record<string, any>;
 };
@@ -37,15 +37,20 @@ const Window = ({ program, isActive, focusProgram, closeProgram }: WindowProps) 
     const [isMaximized, setIsMaximized] = useState(false);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const focus = (e?: any) => {
+    const focus = (e?: any, updateZIndex = true) => {
         e?.stopPropagation();
 
-        const newZIndex = focusProgram(program.id);
-        setZIndex(newZIndex);
+        if (updateZIndex) {
+            const newZIndex = focusProgram(program.id);
+            setZIndex(newZIndex);
+        }
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(focus, []);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => focus(undefined, isActive), [isActive]);
 
     const buttonFunctions: ButtonFunctions = {
         close: () => closeProgram(program.id),
