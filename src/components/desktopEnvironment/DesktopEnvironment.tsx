@@ -128,7 +128,8 @@ const DesktopEnvironment = () => {
             id: 'welcome',
             name: 'Welcome',
             content: <UnderConstruction />,
-            buttonSet: ButtonSet.CLOSE
+            buttonSet: ButtonSet.CLOSE,
+            props: { enableResizing: false }
         }
     ];
 
