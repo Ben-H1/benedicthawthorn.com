@@ -17,7 +17,7 @@ const Link = ({ link, openInNewTab, className, children }: LinkProps) => {
             href={link}
             target={openInNewTab ? '_blank' : undefined}
             rel='noreferrer noopener'
-            className={cn('text-indigo-800 hover:underline flex items-center', className)}
+            className={cn('text-indigo-800 hover:underline flex items-center cursor-pointer', className)}
         >
             {children}
             {openInNewTab && (
