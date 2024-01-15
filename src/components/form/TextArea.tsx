@@ -6,9 +6,9 @@ type TextAreaProps = {
 
 const TextArea = ({ className }: TextAreaProps) => {
     return (
-        <div className='border-black border rounded-md overflow-hidden'>
+        <div className={cn('border-black border rounded-md overflow-hidden flex flex-col', className)}>
             <textarea
-                className={cn('px-2 py-1 outline-none scrollbar overflow-auto resize-none align-top', className)}
+                className='px-2 py-1 outline-none scrollbar overflow-auto resize-none align-top flex-1'
             />
         </div>
     );
