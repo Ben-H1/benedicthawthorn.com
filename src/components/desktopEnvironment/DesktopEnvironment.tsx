@@ -109,7 +109,7 @@ const DesktopEnvironment = () => {
             onMouseDown={focusNone}
         >
             <div className='bg-gray-300 flex-1 relative'>
-                {programs.map((program) => (
+                {programs.filter(p => !!p.icon).map((program) => (
                     <DesktopIcon
                         key={`desktopIcon-${program.id}`}
                         program={program}
