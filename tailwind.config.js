@@ -9,6 +9,16 @@ export default {
             },
             dropShadow: {
                 window: '5px 5px 0 rgba(0, 0, 0, 0.25)'
+            },
+            animation: {
+                fadeOut: 'fadeOut 5s ease-out'
+            },
+            keyframes: {
+                fadeOut: {
+                    '0%': { backgroundColor: 'black', backdropFilter: 'blur(8px)' },
+                    '50%': { backdropFilter: 'blur(0px)' },
+                    '100%': {}
+                }
             }
         }
     },
