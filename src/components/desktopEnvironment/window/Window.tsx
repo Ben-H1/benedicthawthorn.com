@@ -48,6 +48,12 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
     
             const windowWidth = windowRef.current?.clientWidth;
             const windowHeight = windowRef.current?.clientHeight;
+
+            console.log(`desktopWidth: ${desktopWidth}`);
+            console.log(`desktopHeight: ${desktopHeight}`);
+            console.log(`windowWidth: ${windowWidth}`);
+            console.log(`windowHeight: ${windowHeight}`);
+            console.log('---');
     
             if (
                 desktopWidth !== undefined &&
@@ -57,6 +63,9 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             ) {
                 const x = Math.floor(desktopWidth / 2 - windowWidth / 2);
                 const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
+
+                console.log('updating position');
+                console.log({ x, y });
     
                 rndRef.current?.updatePosition({ x, y });
                 setPosition({ x, y });
