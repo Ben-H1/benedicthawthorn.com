@@ -55,10 +55,7 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/tools.png',
-                position: {
-                    top: 20,
-                    left: 20
-                }
+                position: { top: 20, left: 20 }
             },
             props: { enableResizing: false }
         },
@@ -69,10 +66,7 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/cd-music.png',
-                position: {
-                    top: 116,
-                    left: 20
-                }
+                position: { top: 116, left: 20 }
             },
             props: { enableResizing: false }
         },
@@ -83,10 +77,7 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/book-help.png',
-                position: {
-                    top: 212,
-                    left: 20
-                }
+                position: { top: 212, left: 20 }
             },
             props: { enableResizing: false }
         },
@@ -97,10 +88,7 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/email.png',
-                position: {
-                    top: 308,
-                    left: 20
-                }
+                position: { top: 308, left: 20 }
             },
             props: { enableResizing: false }
         },
@@ -111,10 +99,7 @@ const DesktopEnvironment = () => {
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/internet.png',
-                position: {
-                    top: 404,
-                    left: 20
-                }
+                position: { top: 404, left: 20 }
             },
             props: { enableResizing: false }
         },
