@@ -5,6 +5,7 @@ import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
 import ContactMe from '@components/programs/ContactMe';
 import EmailMe from '@components/programs/EmailMe';
+import Welcome from '@components/programs/Welcome';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -127,9 +128,13 @@ const DesktopEnvironment = () => {
         {
             id: 'welcome',
             name: 'Welcome',
-            content: <UnderConstruction />,
+            content: <Welcome />,
             buttonSet: ButtonSet.CLOSE,
-            props: { enableResizing: false }
+            props: {
+                default: { width: 525, height: 362 },
+                minWidth: 400, minHeight: 250,
+                maxWidth: 800, maxHeight: 362
+            }
         }
     ];
 
