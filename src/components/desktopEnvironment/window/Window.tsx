@@ -42,23 +42,25 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
     const windowRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        const desktopWidth = desktopRef.current?.clientWidth;
-        const desktopHeight = desktopRef.current?.clientHeight;
-
-        const windowWidth = windowRef.current?.clientWidth;
-        const windowHeight = windowRef.current?.clientHeight;
-
-        if (
-            desktopWidth !== undefined &&
-            desktopHeight !== undefined &&
-            windowWidth !== undefined &&
-            windowHeight !== undefined
-        ) {
-            const x = Math.floor(desktopWidth / 2 - windowWidth / 2);
-            const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
-
-            rndRef.current?.updatePosition({ x, y });
-            setPosition({ x, y });
+        if (!Object.prototype.hasOwnProperty.call(program?.props, 'position')) {
+            const desktopWidth = desktopRef.current?.clientWidth;
+            const desktopHeight = desktopRef.current?.clientHeight;
+    
+            const windowWidth = windowRef.current?.clientWidth;
+            const windowHeight = windowRef.current?.clientHeight;
+    
+            if (
+                desktopWidth !== undefined &&
+                desktopHeight !== undefined &&
+                windowWidth !== undefined &&
+                windowHeight !== undefined
+            ) {
+                const x = Math.floor(desktopWidth / 2 - windowWidth / 2);
+                const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
+    
+                rndRef.current?.updatePosition({ x, y });
+                setPosition({ x, y });
+            }
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
