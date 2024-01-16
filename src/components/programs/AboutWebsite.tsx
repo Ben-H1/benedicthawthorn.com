@@ -1,3 +1,4 @@
+import Icon from '@components/Icon';
 import Body from '@components/text/Body';
 import H1 from '@components/text/H1';
 import Link from '@components/text/Link';
@@ -8,23 +9,23 @@ const AboutWebsite = () => {
             <H1>Technologies</H1>
             <Body>This website was built using the following technologies:</Body>
             <div className='flex space-x-2 items-center'>
-                <img src='images/typescript.png' />
+                <Icon path='images/typescript.png' />
                 <Body><Link link='https://typescriptlang.org/' openInNewTab>TypeScript</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='images/react.png' />
+                <Icon path='images/react.png' />
                 <Body><Link link='https://react.dev/' openInNewTab>React</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='images/tailwind.png' />
+                <Icon path='images/tailwind.png' />
                 <Body><Link link='https://tailwindcss.com/' openInNewTab>Tailwind CSS</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='images/vite.png' />
+                <Icon path='images/vite.png' />
                 <Body><Link link='https://vitejs.dev/' openInNewTab>Vite</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='images/swc.png' />
+                <Icon path='images/swc.png' />
                 <Body><Link link='https://swc.rs/' openInNewTab>Speedy Web Compiler</Link></Body>
             </div>
             <hr className='w-full' />

@@ -2,6 +2,7 @@ import { MouseEventHandler } from 'react';
 import { Program } from './window/Window';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
+import Icon from '@components/Icon';
 
 type DesktopIconProps = {
     program: Program;
@@ -26,7 +27,7 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
                 onClick={clickHandler}
             >
                 {(typeof program.icon!.icon === 'string') ? (
-                    <img src={program.icon!.icon}></img>
+                    <Icon path={program.icon!.icon} />
                 ) : (
                     <FontAwesomeIcon icon={program.icon!.icon} size='2xl' />
                 )}
