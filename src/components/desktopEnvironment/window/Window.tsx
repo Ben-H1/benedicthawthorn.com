@@ -20,6 +20,7 @@ export type Program = {
     content: ReactNode;
     buttonSet: ButtonSet;
     icon?: Icon;
+    centerWithUseEffect?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: Record<string, any>;
 };
@@ -73,8 +74,20 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
         }
     };
 
+    useEffect(() => {
+        if (program.centerWithUseEffect) {
+            centerWindow();
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useLayoutEffect(centerWindow, []);
+    }, []);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useLayoutEffect(() => {
+        if (!program.centerWithUseEffect) {
+            centerWindow();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const focus = (e?: any, updateZIndex = true) => {
