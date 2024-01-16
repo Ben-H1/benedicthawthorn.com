@@ -4,10 +4,9 @@ type IconProps = {
 
 const Icon = ({ path }: IconProps) => {
     return (
-        <img
-            src={path}
-            className='h-8 w-8'
-        />
+        <div className='h-8 w-8 flex items-center justify-center'>
+            <img src={path} />
+        </div>
     );
 };
 
