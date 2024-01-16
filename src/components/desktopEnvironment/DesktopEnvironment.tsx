@@ -116,6 +116,7 @@ const DesktopEnvironment = () => {
             name: 'Welcome',
             content: <Welcome />,
             buttonSet: ButtonSet.CLOSE,
+            centerWithUseEffect: true,
             props: {
                 default: { width: 525, height: 362 },
                 minWidth: 400, minHeight: 250,
