@@ -41,7 +41,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
     const rndRef = useRef<Rnd>(null);
     const windowRef = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
+    const centerWindow = () => {
         if (!Object.prototype.hasOwnProperty.call(program?.props, 'position')) {
             const desktopWidth = desktopRef.current?.clientWidth;
             const desktopHeight = desktopRef.current?.clientHeight;
@@ -71,8 +71,10 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
                 setPosition({ x, y });
             }
         }
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    useLayoutEffect(centerWindow, []);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const focus = (e?: any, updateZIndex = true) => {
