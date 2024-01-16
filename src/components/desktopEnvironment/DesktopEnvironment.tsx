@@ -6,6 +6,7 @@ import Window, { Program } from './window/Window';
 import ContactMe from '@components/programs/ContactMe';
 import EmailMe from '@components/programs/EmailMe';
 import Welcome from '@components/programs/Welcome';
+import AboutWebsite from '@components/programs/AboutWebsite';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -95,13 +96,13 @@ const DesktopEnvironment = () => {
         {
             id: 'aboutWebsite',
             name: 'About Website',
-            content: <UnderConstruction />,
+            content: <AboutWebsite />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'src/assets/images/internet.png',
                 position: { top: 404, left: 20 }
             },
-            props: { enableResizing: false }
+            props: { minWidth: 475, minHeight: 250 }
         },
         {
             id: 'emailMe',
