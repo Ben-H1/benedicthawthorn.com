@@ -24,8 +24,7 @@ const Link = ({ link, openInNewTab, onClick, className, children }: LinkProps) =
             {openInNewTab && (
                 <FontAwesomeIcon
                     icon={faArrowUpRightFromSquare}
-                    size='xs'
-                    className='ml-2'
+                    className='ml-2 h-3 w-3'
                 />
             )}
         </a>
