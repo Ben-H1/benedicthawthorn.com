@@ -8,23 +8,23 @@ const AboutWebsite = () => {
             <H1>Technologies</H1>
             <Body>This website was built using the following technologies:</Body>
             <div className='flex space-x-2 items-center'>
-                <img src='src/assets/images/typescript.png' />
+                <img src='images/typescript.png' />
                 <Body><Link link='https://typescriptlang.org/' openInNewTab>TypeScript</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='src/assets/images/react.png' />
+                <img src='images/react.png' />
                 <Body><Link link='https://react.dev/' openInNewTab>React</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='src/assets/images/tailwind.png' />
+                <img src='images/tailwind.png' />
                 <Body><Link link='https://tailwindcss.com/' openInNewTab>Tailwind CSS</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='src/assets/images/vite.png' />
+                <img src='images/vite.png' />
                 <Body><Link link='https://vitejs.dev/' openInNewTab>Vite</Link></Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <img src='src/assets/images/swc.png' />
+                <img src='images/swc.png' />
                 <Body><Link link='https://swc.rs/' openInNewTab>Speedy Web Compiler</Link></Body>
             </div>
             <hr className='w-full' />

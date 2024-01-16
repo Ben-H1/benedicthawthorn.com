@@ -55,7 +55,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'src/assets/images/tools.png',
+                icon: 'images/tools.png',
                 position: { top: 20, left: 20 }
             },
             props: { enableResizing: false }
@@ -66,7 +66,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'src/assets/images/cd-music.png',
+                icon: 'images/cd-music.png',
                 position: { top: 116, left: 20 }
             },
             props: { enableResizing: false }
@@ -77,7 +77,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'src/assets/images/book-help.png',
+                icon: 'images/book-help.png',
                 position: { top: 212, left: 20 }
             },
             props: { enableResizing: false }
@@ -88,7 +88,7 @@ const DesktopEnvironment = () => {
             content: <ContactMe openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'src/assets/images/email.png',
+                icon: 'images/email.png',
                 position: { top: 308, left: 20 }
             },
             props: { enableResizing: false }
@@ -99,7 +99,7 @@ const DesktopEnvironment = () => {
             content: <AboutWebsite />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'src/assets/images/internet.png',
+                icon: 'images/internet.png',
                 position: { top: 404, left: 20 }
             },
             props: { minWidth: 475, minHeight: 250 }
