@@ -7,12 +7,6 @@ import _ from 'lodash';
 
 type Icon = {
     icon: IconProp | string;
-    position: {
-        top?: number;
-        left?: number;
-        right?: number;
-        bottom?: number;
-    };
 };
 
 export type Program = {
