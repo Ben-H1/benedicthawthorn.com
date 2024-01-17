@@ -56,8 +56,11 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
                 windowWidth !== undefined &&
                 windowHeight !== undefined
             ) {
-                const x = Math.floor(desktopWidth / 2 - windowWidth / 2);
-                const y = Math.floor(desktopHeight / 2 - windowHeight / 2);
+                let x = Math.floor(desktopWidth / 2 - windowWidth / 2);
+                let y = Math.floor(desktopHeight / 2 - windowHeight / 2);
+
+                x = Math.max(0, x);
+                y = Math.max(0, y);
 
                 rndRef.current?.updatePosition({ x, y });
                 setPosition({ x, y });
