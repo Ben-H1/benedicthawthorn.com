@@ -55,8 +55,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'images/tools.png',
-                position: { top: 20, left: 20 }
+                icon: 'images/tools.png'
             },
             props: { enableResizing: false }
         },
@@ -66,8 +65,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'images/cd-music.png',
-                position: { top: 116, left: 20 }
+                icon: 'images/cd-music.png'
             },
             props: { enableResizing: false }
         },
@@ -77,8 +75,7 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'images/book-help.png',
-                position: { top: 212, left: 20 }
+                icon: 'images/book-help.png'
             },
             props: { enableResizing: false }
         },
@@ -88,8 +85,7 @@ const DesktopEnvironment = () => {
             content: <ContactMe openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'images/email.png',
-                position: { top: 308, left: 20 }
+                icon: 'images/email.png'
             },
             props: { enableResizing: false }
         },
@@ -99,8 +95,7 @@ const DesktopEnvironment = () => {
             content: <AboutWebsite />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                icon: 'images/internet.png',
-                position: { top: 404, left: 20 }
+                icon: 'images/internet.png'
             },
             props: { minWidth: 475, minHeight: 250 }
         },
@@ -137,15 +132,17 @@ const DesktopEnvironment = () => {
                 ref={desktopRef}
                 className='bg-gray-300 flex-1 relative'
             >
-                {programs.filter(p => !!p.icon).map((program) => (
-                    <DesktopIcon
-                        key={`desktopIcon-${program.id}`}
-                        program={program}
-                        isActive={activeIconId === program.id}
-                        focusIcon={focusIcon}
-                        openProgram={openProgram}
-                    />
-                ))}
+                <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-fit'>
+                    {programs.filter(p => !!p.icon).map((program) => (
+                        <DesktopIcon
+                            key={`desktopIcon-${program.id}`}
+                            program={program}
+                            isActive={activeIconId === program.id}
+                            focusIcon={focusIcon}
+                            openProgram={openProgram}
+                        />
+                    ))}
+                </div>
                 {openProgramIds.map((programId) => (
                     <Window
                         key={`window-${programId}`}
