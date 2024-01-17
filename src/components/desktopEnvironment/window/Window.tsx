@@ -139,6 +139,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             onResizeStop={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
             onDragStop={(_, d) => setPosition({ x: d.x, y: d.y })}
             enableResizing={!isMaximized}
+            disableDragging={_.has(program, 'props.position')}
             style={{ zIndex }}
             {...maximizedProps}
             {...windowProps}
