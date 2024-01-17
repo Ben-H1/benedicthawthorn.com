@@ -34,6 +34,7 @@ const AboutWebsite = () => {
             <div className='flex flex-col w-full items-center'>
                 <Body><Link link='https://npmjs.com/package/react-rnd' openInNewTab>react-rnd</Link></Body>
                 <Body><Link link='https://fontawesome.com/' openInNewTab>Font Awesome</Link></Body>
+                <Body><Link link='https://lodash.com/' openInNewTab>lodash</Link></Body>
                 <Body><Link link='https://npmjs.com/package/clsx' openInNewTab>clsx</Link></Body>
                 <Body><Link link='https://npmjs.com/package/tailwind-merge' openInNewTab>tailwind-merge</Link></Body>
             </div>
