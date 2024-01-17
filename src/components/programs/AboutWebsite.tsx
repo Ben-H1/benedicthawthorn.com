@@ -37,6 +37,17 @@ const AboutWebsite = () => {
                 <Body><Link link='https://npmjs.com/package/clsx' openInNewTab>clsx</Link></Body>
                 <Body><Link link='https://npmjs.com/package/tailwind-merge' openInNewTab>tailwind-merge</Link></Body>
             </div>
+            <hr className='w-full' />
+            <H1>Services</H1>
+            <Body>This website was built using the following services:</Body>
+            <div className='flex space-x-2 items-center'>
+                <Icon path='images/github.png' />
+                <Body><Link link='https://github.com/' openInNewTab>GitHub</Link></Body>
+            </div>
+            <div className='flex space-x-2 items-center'>
+                <Icon path='images/vercel.png' />
+                <Body><Link link='https://vercel.com/' openInNewTab>Vercel</Link></Body>
+            </div>
         </div>
     );
 };
