@@ -3,6 +3,7 @@ import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } fr
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
+import _ from 'lodash';
 
 type Icon = {
     icon: IconProp | string;
@@ -43,7 +44,11 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
     const windowRef = useRef<HTMLDivElement>(null);
 
     const centerWindow = () => {
-        if (!Object.prototype.hasOwnProperty.call(program?.props, 'position')) {
+        if (
+            !_.has(program, 'props.position') &&
+            !_.has(program, 'props.default.x') &&
+            !_.has(program, 'props.default.y')
+        ) {
             const desktopWidth = desktopRef.current?.clientWidth;
             const desktopHeight = desktopRef.current?.clientHeight;
 
