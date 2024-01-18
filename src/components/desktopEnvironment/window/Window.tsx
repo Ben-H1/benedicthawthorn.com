@@ -71,6 +71,16 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
         if (program.centerWithUseEffect) {
             centerWindow();
         }
+
+        if (desktopRef.current && windowRef.current && rndRef.current) {
+            if (windowRef.current.clientHeight > desktopRef.current.clientHeight) {
+                rndRef.current.updateSize({ width: windowRef.current.clientWidth, height: desktopRef.current.clientHeight });
+            }
+
+            if (windowRef.current.clientWidth > desktopRef.current.clientWidth) {
+                rndRef.current.updateSize({ width: desktopRef.current.clientWidth, height: windowRef.current.clientHeight });
+            }
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
