@@ -1,7 +1,7 @@
 import { cn } from '@util/css';
-import { HTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
-interface TextBoxProps extends HTMLAttributes<HTMLInputElement> {
+interface TextBoxProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
 }
 

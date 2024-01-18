@@ -1,7 +1,7 @@
 import { cn } from '@util/css';
-import { HTMLAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 
-interface TextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string;
 }
 

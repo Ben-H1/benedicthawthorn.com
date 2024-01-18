@@ -1,7 +1,7 @@
 import { cn } from '@util/css';
-import { HTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
-interface SliderProps extends HTMLAttributes<HTMLInputElement> {
+interface SliderProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
 }
 

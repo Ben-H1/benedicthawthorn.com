@@ -1,7 +1,7 @@
 import { cn } from '@util/css';
-import { HTMLAttributes, MouseEventHandler, ReactNode, useState } from 'react';
+import { ButtonHTMLAttributes, MouseEventHandler, ReactNode, useState } from 'react';
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     onClick?: MouseEventHandler<HTMLButtonElement>;
     tempChildren?: ReactNode;
     tempDelayMs?: number;
