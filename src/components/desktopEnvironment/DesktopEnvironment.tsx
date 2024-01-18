@@ -97,7 +97,7 @@ const DesktopEnvironment = () => {
             icon: {
                 icon: 'images/internet.png'
             },
-            props: { minWidth: 475, minHeight: 250 }
+            props: { minWidth: 495, minHeight: 250 }
         },
         {
             id: 'emailMe',

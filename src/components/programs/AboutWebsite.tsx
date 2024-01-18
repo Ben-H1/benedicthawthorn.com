@@ -32,11 +32,12 @@ const AboutWebsite = () => {
             <H1>Packages</H1>
             <Body>This website was built using the following packages:</Body>
             <div className='flex flex-col w-full items-center'>
-                <Body><Link link='https://npmjs.com/package/react-rnd' openInNewTab>react-rnd</Link></Body>
+                <Body><Link link='https://npmjs.com/package/react-rnd?activeTab=readme' openInNewTab>react-rnd</Link></Body>
                 <Body><Link link='https://fontawesome.com/' openInNewTab>Font Awesome</Link></Body>
                 <Body><Link link='https://lodash.com/' openInNewTab>lodash</Link></Body>
-                <Body><Link link='https://npmjs.com/package/clsx' openInNewTab>clsx</Link></Body>
-                <Body><Link link='https://npmjs.com/package/tailwind-merge' openInNewTab>tailwind-merge</Link></Body>
+                <Body><Link link='https://npmjs.com/package/react-soundplayer?activeTab=readme' openInNewTab>react-soundplayer</Link></Body>
+                <Body><Link link='https://npmjs.com/package/clsx?activeTab=readme' openInNewTab>clsx</Link></Body>
+                <Body><Link link='https://npmjs.com/package/tailwind-merge?activeTab=readme' openInNewTab>tailwind-merge</Link></Body>
             </div>
             <hr className='w-full' />
             <H1>Services</H1>
