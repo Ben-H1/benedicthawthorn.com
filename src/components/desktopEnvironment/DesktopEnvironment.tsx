@@ -132,7 +132,7 @@ const DesktopEnvironment = () => {
                 ref={desktopRef}
                 className='bg-gray-300 flex-1 relative'
             >
-                <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-fit'>
+                <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-0'>
                     {programs.filter(p => !!p.icon).map((program) => (
                         <DesktopIcon
                             key={`desktopIcon-${program.id}`}
