@@ -13,7 +13,10 @@ const EmailMe = () => {
     return (
         <div className='w-full flex flex-col space-y-2 min-h-full'>
             <div className='flex justify-center'>
-                <Button onClick={() => navigator.clipboard.writeText(emailAddress)}>
+                <Button
+                    onClick={() => navigator.clipboard.writeText(emailAddress)}
+                    tempChildren='Copied!'
+                >
                     Copy my email address
                 </Button>
             </div>
