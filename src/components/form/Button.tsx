@@ -1,14 +1,13 @@
 import { cn } from '@util/css';
-import { MouseEventHandler, ReactNode, useState } from 'react';
+import { HTMLAttributes, MouseEventHandler, ReactNode, useState } from 'react';
 
-type ButtonProps = {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     onClick?: MouseEventHandler<HTMLButtonElement>;
     tempChildren?: ReactNode;
     tempDelayMs?: number;
     className?: string;
     children: ReactNode;
-    [prop: string]: unknown;
-};
+}
 
 const Button = ({ onClick, tempChildren, tempDelayMs = 1000, className, children, ...props }: ButtonProps) => {
     const [buttonChildren, setButtonChildren] = useState(children);

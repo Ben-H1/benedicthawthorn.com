@@ -1,9 +1,9 @@
 import { cn } from '@util/css';
+import { HTMLAttributes } from 'react';
 
-type TextBoxProps = {
+interface TextBoxProps extends HTMLAttributes<HTMLInputElement> {
     className?: string;
-    [prop: string]: unknown;
-};
+}
 
 const TextBox = ({ className, ...props }: TextBoxProps) => {
     return (

@@ -1,9 +1,9 @@
 import { cn } from '@util/css';
+import { HTMLAttributes } from 'react';
 
-type TextAreaProps = {
+interface TextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
     className?: string;
-    [prop: string]: unknown;
-};
+}
 
 const TextArea = ({ className, ...props }: TextAreaProps) => {
     return (
