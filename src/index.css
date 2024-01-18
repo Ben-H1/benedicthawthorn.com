@@ -92,6 +92,7 @@
     -webkit-appearance: none;
     appearance: none;
     height: 16px;
+    outline: none;
 }
 
 .slider::-webkit-slider-thumb {
