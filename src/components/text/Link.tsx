@@ -1,24 +1,21 @@
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
-import { MouseEventHandler, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 
-type LinkProps = {
-    link?: string;
+interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     openInNewTab?: boolean;
-    onClick?: MouseEventHandler;
     className?: string;
     children: ReactNode;
-};
+}
 
-const Link = ({ link, openInNewTab, onClick, className, children }: LinkProps) => {
+const Link = ({ openInNewTab, className, children, ...props }: LinkProps) => {
     return (
         <a
-            href={link}
             target={openInNewTab ? '_blank' : undefined}
             rel='noreferrer noopener'
-            onClick={onClick}
             className={cn('text-indigo-800 hover:underline flex items-center cursor-pointer', className)}
+            {...props}
         >
             {children}
             {openInNewTab && (
