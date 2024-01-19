@@ -26,7 +26,7 @@ const Button = ({ onClick, tempChildren, tempDelayMs = 1000, className, children
     return (
         <button
             onClick={handleClick}
-            className={cn('border-black border px-2 py-1 rounded-md active:bg-gray-300 select-none', className)}
+            className={cn('border-black border px-2 py-1 rounded-md active:bg-gray-300 select-none font-chicago text-sm', className)}
             {...props}
         >
             {buttonChildren}

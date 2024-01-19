@@ -1,11 +1,11 @@
 import Icon from '@components/Icon';
-import H2 from '@components/text/H2';
+import Text from '@components/Text';
 
 const UnderConstruction = () => {
     return (
         <div className='flex flex-col h-full items-center justify-center p-8 space-y-2'>
             <Icon path='images/under-construction.png' />
-            <H2>Under Construction</H2>
+            <Text.H2>Under Construction</Text.H2>
         </div>
     );
 };

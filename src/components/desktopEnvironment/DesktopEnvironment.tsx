@@ -124,7 +124,7 @@ const DesktopEnvironment = () => {
 
     return (
         <div
-            className='h-screen flex flex-col overflow-hidden relative font-chicago text-sm'
+            className='h-screen flex flex-col overflow-hidden relative'
             onMouseDown={focusNone}
         >
             <div

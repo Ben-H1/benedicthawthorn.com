@@ -1,54 +1,53 @@
 import Icon from '@components/Icon';
-import Body from '@components/text/Body';
-import H1 from '@components/text/H1';
+import Text from '@components/Text';
 import Link from '@components/text/Link';
 
 const AboutWebsite = () => {
     return (
         <div className='flex flex-col items-center space-y-2 text-center'>
-            <H1>Technologies</H1>
-            <Body>This website was built using the following technologies:</Body>
+            <Text.H1>Technologies</Text.H1>
+            <Text.Body>This website was built using the following technologies:</Text.Body>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/typescript.png' />
-                <Body><Link link='https://typescriptlang.org/' openInNewTab>TypeScript</Link></Body>
+                <Text.Body><Link link='https://typescriptlang.org/' openInNewTab>TypeScript</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/react.png' />
-                <Body><Link link='https://react.dev/' openInNewTab>React</Link></Body>
+                <Text.Body><Link link='https://react.dev/' openInNewTab>React</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/tailwind.png' />
-                <Body><Link link='https://tailwindcss.com/' openInNewTab>Tailwind CSS</Link></Body>
+                <Text.Body><Link link='https://tailwindcss.com/' openInNewTab>Tailwind CSS</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/vite.png' />
-                <Body><Link link='https://vitejs.dev/' openInNewTab>Vite</Link></Body>
+                <Text.Body><Link link='https://vitejs.dev/' openInNewTab>Vite</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/swc.png' />
-                <Body><Link link='https://swc.rs/' openInNewTab>Speedy Web Compiler</Link></Body>
+                <Text.Body><Link link='https://swc.rs/' openInNewTab>Speedy Web Compiler</Link></Text.Body>
             </div>
             <hr className='w-full' />
-            <H1>Packages</H1>
-            <Body>This website was built using the following packages:</Body>
+            <Text.H1>Packages</Text.H1>
+            <Text.Body>This website was built using the following packages:</Text.Body>
             <div className='flex flex-col w-full items-center'>
-                <Body><Link link='https://npmjs.com/package/react-rnd?activeTab=readme' openInNewTab>react-rnd</Link></Body>
-                <Body><Link link='https://fontawesome.com/' openInNewTab>Font Awesome</Link></Body>
-                <Body><Link link='https://lodash.com/' openInNewTab>lodash</Link></Body>
-                <Body><Link link='https://npmjs.com/package/react-soundplayer?activeTab=readme' openInNewTab>react-soundplayer</Link></Body>
-                <Body><Link link='https://npmjs.com/package/clsx?activeTab=readme' openInNewTab>clsx</Link></Body>
-                <Body><Link link='https://npmjs.com/package/tailwind-merge?activeTab=readme' openInNewTab>tailwind-merge</Link></Body>
+                <Text.Body><Link link='https://npmjs.com/package/react-rnd?activeTab=readme' openInNewTab>react-rnd</Link></Text.Body>
+                <Text.Body><Link link='https://fontawesome.com/' openInNewTab>Font Awesome</Link></Text.Body>
+                <Text.Body><Link link='https://lodash.com/' openInNewTab>lodash</Link></Text.Body>
+                <Text.Body><Link link='https://npmjs.com/package/react-soundplayer?activeTab=readme' openInNewTab>react-soundplayer</Link></Text.Body>
+                <Text.Body><Link link='https://npmjs.com/package/clsx?activeTab=readme' openInNewTab>clsx</Link></Text.Body>
+                <Text.Body><Link link='https://npmjs.com/package/tailwind-merge?activeTab=readme' openInNewTab>tailwind-merge</Link></Text.Body>
             </div>
             <hr className='w-full' />
-            <H1>Services</H1>
-            <Body>This website was built using the following services:</Body>
+            <Text.H1>Services</Text.H1>
+            <Text.Body>This website was built using the following services:</Text.Body>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/github.png' />
-                <Body><Link link='https://github.com/' openInNewTab>GitHub</Link></Body>
+                <Text.Body><Link link='https://github.com/' openInNewTab>GitHub</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
                 <Icon path='images/vercel.png' />
-                <Body><Link link='https://vercel.com/' openInNewTab>Vercel</Link></Body>
+                <Text.Body><Link link='https://vercel.com/' openInNewTab>Vercel</Link></Text.Body>
             </div>
         </div>
     );

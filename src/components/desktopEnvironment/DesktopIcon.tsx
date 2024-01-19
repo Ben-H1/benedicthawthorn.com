@@ -3,6 +3,7 @@ import { Program } from './window/Window';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
 import Icon from '@components/Icon';
+import Text from '@components/Text';
 
 type DesktopIconProps = {
     program: Program;
@@ -31,9 +32,9 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
                 ) : (
                     <FontAwesomeIcon icon={program.icon!.icon} size='2xl' />
                 )}
-                <div className={cn('px-1 text-center', isActive && 'text-white bg-black')}>
+                <Text.System className={cn('px-1 text-center', isActive && 'text-white bg-black')}>
                     {program.name}
-                </div>
+                </Text.System>
             </div>
         </div>
     );

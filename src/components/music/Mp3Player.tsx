@@ -1,7 +1,6 @@
+import Text from '@components/Text';
 import { withCustomAudio } from 'react-soundplayer/addons';
 import { PlayButton } from 'react-soundplayer/components';
-import H3 from '../text/H3';
-import Body from '../text/Body';
 import Slider from '../form/Slider';
 
 type Mp3Track = {
@@ -45,10 +44,10 @@ const ActualPlayer = withCustomAudio((props: any) => {
                 className='w-20 h-20'
             />
             <div className='flex-1 truncate'>
-                <H3 className='truncate'>{track.title}</H3>
-                <Body className='text-sm mb-2 truncate'>{track.artist}</Body>
+                <Text.H3 className='truncate'>{track.title}</Text.H3>
+                <Text.Body className='text-sm mb-2 truncate'>{track.artist}</Text.Body>
                 <div className='flex space-x-2 items-center'>
-                    <span>{currentTimeString}</span>
+                    <Text.System>{currentTimeString}</Text.System>
                     <Slider
                         min={0}
                         max={Math.ceil(duration)}
@@ -56,7 +55,7 @@ const ActualPlayer = withCustomAudio((props: any) => {
                         onChange={(e) => soundCloudAudio.audio.currentTime = e.target.value}
                         className='w-full'
                     />
-                    <span>{durationString}</span>
+                    <Text.System>{durationString}</Text.System>
                 </div>
             </div>
             <PlayButton

@@ -1,7 +1,7 @@
+import Text from '@components/Text';
 import Button from '@components/form/Button';
 import TextArea from '@components/form/TextArea';
 import TextBox from '@components/form/TextBox';
-import Body from '@components/text/Body';
 import { ChangeEvent, useState } from 'react';
 
 const EmailMe = () => {
@@ -37,14 +37,14 @@ const EmailMe = () => {
             </div>
             <div className='flex flex-col space-y-2 flex-1'>
                 <div>
-                    <Body>Subject:</Body>
+                    <Text.Body>Subject:</Text.Body>
                     <TextBox
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setSubject(e.target.value)}
                         className='w-full'
                     />
                 </div>
                 <div className='flex-1 flex flex-col'>
-                    <Body>Message:</Body>
+                    <Text.Body>Message:</Text.Body>
                     <TextArea
                         onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
                         className='w-full flex-1 min-h-24'
