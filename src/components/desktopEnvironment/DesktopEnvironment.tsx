@@ -70,6 +70,16 @@ const DesktopEnvironment = () => {
             props: { enableResizing: false }
         },
         {
+            id: 'myArtwork',
+            name: 'My Artwork',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: 'images/paint.png'
+            },
+            props: { enableResizing: false }
+        },
+        {
             id: 'aboutMe',
             name: 'About Me',
             content: <UnderConstruction />,
