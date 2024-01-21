@@ -1,9 +1,8 @@
-import { MouseEventHandler } from 'react';
-import { Program } from './window/Window';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { cn } from '@util/css';
 import Icon from '@components/Icon';
 import Text from '@components/Text';
+import { cn } from '@util/css';
+import { MouseEventHandler } from 'react';
+import { Program } from './window/Window';
 
 type DesktopIconProps = {
     program: Program;
@@ -27,11 +26,7 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
                 className='flex flex-col items-center justify-center select-none space-y-2'
                 onClick={clickHandler}
             >
-                {(typeof program.icon!.icon === 'string') ? (
-                    <Icon path={program.icon!.icon} shadow />
-                ) : (
-                    <FontAwesomeIcon icon={program.icon!.icon} size='2xl' />
-                )}
+                <Icon icon={program.icon!} shadow />
                 <Text.System className={cn('px-1 text-center', isActive && 'text-white bg-black')}>
                     {program.name}
                 </Text.System>

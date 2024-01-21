@@ -1,12 +1,12 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import _ from 'lodash';
 import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
-import _ from 'lodash';
 
-type Icon = {
-    icon: IconProp | string;
+export type Icon = {
+    md: string;
+    sm?: string;
 };
 
 export type Program = {

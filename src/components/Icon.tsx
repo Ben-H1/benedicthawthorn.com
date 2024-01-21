@@ -1,21 +1,29 @@
 import { cn } from '@util/css';
+import { Icon } from './desktopEnvironment/window/Window';
 
 type IconProps = {
-    path: string;
+    icon: Icon;
+    size?: 'md' | 'sm';
     shadow?: boolean;
     className?: string;
 };
 
-const Icon = ({ path, shadow, className }: IconProps) => {
+const Icon = ({ icon, size = 'md', shadow, className }: IconProps) => {
+    const sizeProps = {
+        'md': 'h-8 w-8',
+        'sm': 'h-4 w-4'
+    };
+
     return (
         <div
             className={cn(
-                'h-8 w-8 flex items-center justify-center',
+                'flex items-center justify-center',
+                sizeProps[size],
                 shadow && 'drop-shadow-icon',
                 className
             )}
         >
-            <img src={path} />
+            <img src={icon[size] ?? icon['md']} />
         </div>
     );
 };
