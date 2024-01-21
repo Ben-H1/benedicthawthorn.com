@@ -7,6 +7,7 @@ import ContactMe from '@components/programs/ContactMe';
 import EmailMe from '@components/programs/EmailMe';
 import Welcome from '@components/programs/Welcome';
 import AboutWebsite from '@components/programs/AboutWebsite';
+import Clock from '@components/programs/Clock';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -134,7 +135,7 @@ const DesktopEnvironment = () => {
         {
             id: 'clock',
             name: 'Clock',
-            content: <UnderConstruction />,
+            content: <Clock />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 icon: 'images/clock.png'
