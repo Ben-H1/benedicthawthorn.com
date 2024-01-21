@@ -8,7 +8,8 @@ export default {
                 'appleGaramond': ['Apple Garamond']
             },
             dropShadow: {
-                window: '5px 5px 0 rgba(0, 0, 0, 0.25)'
+                window: '5px 5px 0 rgba(0, 0, 0, 0.25)',
+                icon: '5px 5px 0 rgba(0, 0, 0, 0.25)'
             },
             animation: {
                 fadeOut: 'fadeOut 5s ease-out'
