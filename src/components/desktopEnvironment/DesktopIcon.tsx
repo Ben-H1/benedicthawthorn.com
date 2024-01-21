@@ -28,7 +28,7 @@ const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconP
                 onClick={clickHandler}
             >
                 {(typeof program.icon!.icon === 'string') ? (
-                    <Icon path={program.icon!.icon} />
+                    <Icon path={program.icon!.icon} shadow />
                 ) : (
                     <FontAwesomeIcon icon={program.icon!.icon} size='2xl' />
                 )}
