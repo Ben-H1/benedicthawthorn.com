@@ -115,7 +115,7 @@ const DesktopEnvironment = () => {
             name: 'Email Me',
             content: <EmailMe />,
             buttonSet: ButtonSet.CLOSE,
-            props: { minWidth: 266, minHeight: 418 }
+            props: { minWidth: 266, minHeight: 434 }
         },
         {
             id: 'welcome',
