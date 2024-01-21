@@ -22,7 +22,7 @@ const EmailMe = () => {
             </div>
             <div className='flex items-center'>
                 <hr className='flex-1'/>
-                <div className='mx-2'>or</div>
+                <Text.Body className='mx-2'>or</Text.Body>
                 <hr className='flex-1'/>
             </div>
             <div className='flex justify-center'>
@@ -32,7 +32,7 @@ const EmailMe = () => {
             </div>
             <div className='flex items-center'>
                 <hr className='flex-1'/>
-                <div className='mx-2'>or</div>
+                <Text.Body className='mx-2'>or</Text.Body>
                 <hr className='flex-1'/>
             </div>
             <div className='flex flex-col space-y-2 flex-1'>
