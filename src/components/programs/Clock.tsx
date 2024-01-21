@@ -29,7 +29,9 @@ const Clock = () => {
     const [timeState, setTimeState] = useState<Record<string, string>>({});
 
     useEffect(() => {
-        const interval = setInterval(() => setTimeState(getTime()));
+        setTimeState(getTime());
+        const interval = setInterval(() => setTimeState(getTime()), 1000);
+
         return (() => clearInterval(interval));
     }, []);
 
