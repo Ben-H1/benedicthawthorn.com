@@ -15,6 +15,7 @@ export type Program = {
     content: ReactNode;
     buttonSet: ButtonSet;
     icon?: Icon;
+    showOnDesktop?: boolean;
     centerWithUseEffect?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: Record<string, any>;

@@ -121,6 +121,7 @@ const DesktopEnvironment = () => {
             name: 'Email Me',
             content: <EmailMe />,
             buttonSet: ButtonSet.CLOSE,
+            showOnDesktop: false,
             props: { minWidth: 266, minHeight: 434 }
         },
         {
@@ -128,6 +129,7 @@ const DesktopEnvironment = () => {
             name: 'Welcome',
             content: <Welcome />,
             buttonSet: ButtonSet.CLOSE,
+            showOnDesktop: false,
             centerWithUseEffect: true,
             props: {
                 default: { width: 525, height: 362 },
@@ -168,7 +170,7 @@ const DesktopEnvironment = () => {
                 className='bg-gray-300 flex-1 relative'
             >
                 <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-0'>
-                    {programs.filter(p => !!p.icon).map((program) => (
+                    {programs.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
                         <DesktopIcon
                             key={`desktopIcon-${program.id}`}
                             program={program}
@@ -179,7 +181,7 @@ const DesktopEnvironment = () => {
                     ))}
                 </div>
                 <div className='absolute top-5 right-5 bottom-5 flex flex-col flex-wrap-reverse w-0'>
-                    {programs2.filter(p => !!p.icon).map((program) => (
+                    {programs2.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
                         <DesktopIcon
                             key={`desktopIcon-${program.id}`}
                             program={program}
