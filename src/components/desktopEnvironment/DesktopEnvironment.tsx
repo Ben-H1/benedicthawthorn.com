@@ -140,7 +140,10 @@ const DesktopEnvironment = () => {
             icon: {
                 icon: 'images/clock.png'
             },
-            props: { enableResizing: false }
+            props: {
+                default: { height: 106, width: 231 },
+                enableResizing: false
+            }
         }
     ];
 
