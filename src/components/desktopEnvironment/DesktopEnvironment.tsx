@@ -130,6 +130,21 @@ const DesktopEnvironment = () => {
         }
     ];
 
+    const programs2: Program[] = [
+        {
+            id: 'clock',
+            name: 'Clock',
+            content: <UnderConstruction />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                icon: 'images/clock.png'
+            },
+            props: { enableResizing: false }
+        }
+    ];
+
+    const allPrograms = [...programs, ...programs2];
+
     const desktopRef = useRef(null);
 
     return (
@@ -152,10 +167,21 @@ const DesktopEnvironment = () => {
                         />
                     ))}
                 </div>
+                <div className='absolute top-5 right-5 bottom-5 flex flex-col flex-wrap-reverse w-0'>
+                    {programs2.filter(p => !!p.icon).map((program) => (
+                        <DesktopIcon
+                            key={`desktopIcon-${program.id}`}
+                            program={program}
+                            isActive={activeIconId === program.id}
+                            focusIcon={focusIcon}
+                            openProgram={openProgram}
+                        />
+                    ))}
+                </div>
                 {openProgramIds.map((programId) => (
                     <Window
                         key={`window-${programId}`}
-                        program={programs.find(p => p.id === programId)!}
+                        program={allPrograms.find(p => p.id === programId)!}
                         isActive={activeProgramId === programId}
                         focusProgram={focusProgram}
                         closeProgram={closeProgram}
