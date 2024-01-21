@@ -155,6 +155,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             >
                 <TitleBar
                     name={program.name}
+                    icon={program.icon}
                     isActive={isActive}
                     isMaximized={isMaximized}
                     buttonSet={program.buttonSet}
