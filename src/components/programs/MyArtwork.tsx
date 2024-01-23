@@ -18,7 +18,7 @@ const MyArtwork = () => {
         {
             title: 'Gamma 2',
             description: 'A quick drawing of Gamma 2 from Dragon Ball Super: Super Hero, done using MediBang Jump Paint.',
-            path: 'artwork/Gamma 2.png'
+            path: 'images/artwork/Gamma 2.png'
         }
     ];
 

@@ -57,8 +57,8 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/tools.png',
-                sm: 'images/tools-16.png'
+                md: 'images/icons/tools.png',
+                sm: 'images/icons/tools-16.png'
             },
             props: { enableResizing: false }
         },
@@ -68,8 +68,8 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/cd-music.png',
-                sm: 'images/cd-music-16.png'
+                md: 'images/icons/cd-music.png',
+                sm: 'images/icons/cd-music-16.png'
             },
             props: { enableResizing: false }
         },
@@ -79,8 +79,8 @@ const DesktopEnvironment = () => {
             content: <MyArtwork />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/paint.png',
-                sm: 'images/paint-16.png'
+                md: 'images/icons/paint.png',
+                sm: 'images/icons/paint-16.png'
             },
             props: {
                 default: { width: 500, height: 500 },
@@ -93,8 +93,8 @@ const DesktopEnvironment = () => {
             content: <UnderConstruction />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/book-help.png',
-                sm: 'images/book-help-16.png'
+                md: 'images/icons/book-help.png',
+                sm: 'images/icons/book-help-16.png'
             },
             props: { enableResizing: false }
         },
@@ -104,8 +104,8 @@ const DesktopEnvironment = () => {
             content: <ContactMe openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/email.png',
-                sm: 'images/email-16.png'
+                md: 'images/icons/email.png',
+                sm: 'images/icons/email-16.png'
             },
             props: { enableResizing: false }
         },
@@ -115,8 +115,8 @@ const DesktopEnvironment = () => {
             content: <AboutWebsite />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/internet.png',
-                sm: 'images/internet-16.png'
+                md: 'images/icons/internet.png',
+                sm: 'images/icons/internet-16.png'
             },
             props: { minWidth: 495, minHeight: 250 }
         },
@@ -150,8 +150,8 @@ const DesktopEnvironment = () => {
             content: <Clock />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
-                md: 'images/clock.png',
-                sm: 'images/clock-16.png'
+                md: 'images/icons/clock.png',
+                sm: 'images/icons/clock-16.png'
             },
             props: {
                 default: { height: 106, width: 231 },

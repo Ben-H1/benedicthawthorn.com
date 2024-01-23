@@ -8,23 +8,23 @@ const AboutWebsite = () => {
             <Text.H1>Technologies</Text.H1>
             <Text.Body>This website was built using the following technologies:</Text.Body>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/typescript.png' }} />
+                <Icon icon={{ md: 'images/technologies/typescript.png' }} />
                 <Text.Body><Link href='https://typescriptlang.org/' openInNewTab>TypeScript</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/react.png' }} />
+                <Icon icon={{ md: 'images/technologies/react.png' }} />
                 <Text.Body><Link href='https://react.dev/' openInNewTab>React</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/tailwind.png' }} />
+                <Icon icon={{ md: 'images/technologies/tailwind.png' }} />
                 <Text.Body><Link href='https://tailwindcss.com/' openInNewTab>Tailwind CSS</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/vite.png' }} />
+                <Icon icon={{ md: 'images/technologies/vite.png' }} />
                 <Text.Body><Link href='https://vitejs.dev/' openInNewTab>Vite</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/swc.png' }} />
+                <Icon icon={{ md: 'images/technologies/swc.png' }} />
                 <Text.Body><Link href='https://swc.rs/' openInNewTab>Speedy Web Compiler</Link></Text.Body>
             </div>
             <hr className='w-full' />
@@ -42,11 +42,11 @@ const AboutWebsite = () => {
             <Text.H1>Services</Text.H1>
             <Text.Body>This website was built using the following services:</Text.Body>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/github.png' }} />
+                <Icon icon={{ md: 'images/services/github.png' }} />
                 <Text.Body><Link href='https://github.com/' openInNewTab>GitHub</Link></Text.Body>
             </div>
             <div className='flex space-x-2 items-center'>
-                <Icon icon={{ md: 'images/vercel.png' }} />
+                <Icon icon={{ md: 'images/services/vercel.png' }} />
                 <Text.Body><Link href='https://vercel.com/' openInNewTab>Vercel</Link></Text.Body>
             </div>
         </div>
