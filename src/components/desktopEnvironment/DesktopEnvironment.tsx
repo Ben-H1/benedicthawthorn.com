@@ -8,6 +8,7 @@ import EmailMe from '@components/programs/EmailMe';
 import Welcome from '@components/programs/Welcome';
 import AboutWebsite from '@components/programs/AboutWebsite';
 import Clock from '@components/programs/Clock';
+import MyArtwork from '@components/programs/MyArtwork';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -75,13 +76,16 @@ const DesktopEnvironment = () => {
         {
             id: 'myArtwork',
             name: 'My Artwork',
-            content: <UnderConstruction />,
+            content: <MyArtwork />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 md: 'images/paint.png',
                 sm: 'images/paint-16.png'
             },
-            props: { enableResizing: false }
+            props: {
+                default: { width: 500, height: 500 },
+                minWidth: 600, minHeight: 500
+            }
         },
         {
             id: 'aboutMe',
