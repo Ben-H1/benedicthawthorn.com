@@ -135,6 +135,9 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
         maximizedProps.size = { width: '100%', height: '100%' };
         maximizedProps.position = { x: 0, y: 0 };
 
+        delete windowProps.minWidth;
+        delete windowProps.minHeight;
+
         delete windowProps.maxWidth;
         delete windowProps.maxHeight;
     }
