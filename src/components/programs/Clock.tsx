@@ -36,9 +36,11 @@ const Clock = () => {
     }, []);
 
     return (
-        <div className='flex space-x-2 items-end'>
-            <Text.H1>{timeState?.timeString}</Text.H1>
-            <Text.H2>{timeState?.meridiem}</Text.H2>
+        <div className='flex items-center justify-center h-full'>
+            <div className='flex space-x-2 items-end'>
+                <Text.H1>{timeState?.timeString}</Text.H1>
+                <Text.H2>{timeState?.meridiem}</Text.H2>
+            </div>
         </div>
     );
 };
