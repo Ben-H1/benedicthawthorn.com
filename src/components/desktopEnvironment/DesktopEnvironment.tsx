@@ -215,7 +215,7 @@ const DesktopEnvironment = () => {
                 </div>
             </BrowserView>
             <MobileView>
-                <div className='flex flex-col overflow-hidden relative h-[100vh]'>
+                <div className='h-screen w-screen fixed flex flex-col overflow-hidden'>
                     <div
                         ref={desktopRef}
                         className='bg-gray-300 flex-1 relative'
