@@ -7,16 +7,21 @@ import { Program } from './window/Window';
 type DesktopIconProps = {
     program: Program;
     isActive: boolean;
+    useSingleClick?: boolean;
     focusIcon: (id: string) => void;
     openProgram: (id: string) => void;
 };
 
-const DesktopIcon = ({ program, isActive, focusIcon, openProgram }: DesktopIconProps) => {
+const DesktopIcon = ({ program, isActive, useSingleClick, focusIcon, openProgram }: DesktopIconProps) => {
     const clickHandler: MouseEventHandler<HTMLDivElement> = (e) => {
-        if (e.detail % 2 === 0) {
+        if (useSingleClick) {
             openProgram(program.id);
         } else {
-            focusIcon(program.id);
+            if (e.detail % 2 === 0) {
+                openProgram(program.id);
+            } else {
+                focusIcon(program.id);
+            }
         }
     };
 

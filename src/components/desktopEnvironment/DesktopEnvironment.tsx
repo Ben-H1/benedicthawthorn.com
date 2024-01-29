@@ -9,6 +9,7 @@ import Welcome from '@components/programs/Welcome';
 import AboutWebsite from '@components/programs/AboutWebsite';
 import Clock from '@components/programs/Clock';
 import MyArtwork from '@components/programs/MyArtwork';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -26,6 +27,7 @@ const DesktopEnvironment = () => {
 
         if (openProgramIds.includes(programId)) {
             focusProgram(programId);
+            setOpenProgramIds(p => [...p, programId]);
         } else {
             setOpenProgramIds(p => [...p, programId]);
         }
@@ -165,48 +167,77 @@ const DesktopEnvironment = () => {
     const desktopRef = useRef(null);
 
     return (
-        <div
-            className='h-screen flex flex-col overflow-hidden relative'
-            onMouseDown={focusNone}
-        >
-            <div
-                ref={desktopRef}
-                className='bg-gray-300 flex-1 relative'
-            >
-                <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-0'>
-                    {programs.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
-                        <DesktopIcon
-                            key={`desktopIcon-${program.id}`}
-                            program={program}
-                            isActive={activeIconId === program.id}
-                            focusIcon={focusIcon}
-                            openProgram={openProgram}
-                        />
-                    ))}
+        <>
+            <BrowserView>
+                <div
+                    className='h-screen flex flex-col overflow-hidden relative'
+                    onMouseDown={focusNone}
+                >
+                    <div
+                        ref={desktopRef}
+                        className='bg-gray-300 flex-1 relative'
+                    >
+                        <div className='absolute top-5 left-5 bottom-5 flex flex-col flex-wrap w-0'>
+                            {programs.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
+                                <DesktopIcon
+                                    key={`desktopIcon-${program.id}`}
+                                    program={program}
+                                    isActive={activeIconId === program.id}
+                                    focusIcon={focusIcon}
+                                    openProgram={openProgram}
+                                />
+                            ))}
+                        </div>
+                        <div className='absolute top-5 right-5 bottom-5 flex flex-col flex-wrap-reverse w-0'>
+                            {programs2.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
+                                <DesktopIcon
+                                    key={`desktopIcon-${program.id}`}
+                                    program={program}
+                                    isActive={activeIconId === program.id}
+                                    focusIcon={focusIcon}
+                                    openProgram={openProgram}
+                                />
+                            ))}
+                        </div>
+                        {Array.from(new Set(openProgramIds)).map((programId) => (
+                            <Window
+                                key={`window-${programId}`}
+                                program={allPrograms.find(p => p.id === programId)!}
+                                isActive={activeProgramId === programId}
+                                focusProgram={focusProgram}
+                                closeProgram={closeProgram}
+                                desktopRef={desktopRef}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div className='absolute top-5 right-5 bottom-5 flex flex-col flex-wrap-reverse w-0'>
-                    {programs2.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
-                        <DesktopIcon
-                            key={`desktopIcon-${program.id}`}
-                            program={program}
-                            isActive={activeIconId === program.id}
-                            focusIcon={focusIcon}
-                            openProgram={openProgram}
-                        />
-                    ))}
+            </BrowserView>
+            <MobileView>
+                <div
+                    className='h-screen flex flex-col overflow-hidden relative'
+                    onMouseDown={focusNone}
+                >
+                    <div
+                        ref={desktopRef}
+                        className='bg-white flex-1 relative overflow-y-auto p-4'
+                    >
+                        {allPrograms.find(p => p.id === openProgramIds.slice(-1)[0])?.content}
+                    </div>
+                    <div className='bg-white border-t border-black h-24 flex overflow-x-auto overflow-y-hidden px-2 space-x-2'>
+                        {allPrograms.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
+                            <DesktopIcon
+                                key={`desktopIcon-${program.id}`}
+                                program={program}
+                                isActive={activeIconId === program.id}
+                                useSingleClick
+                                focusIcon={focusIcon}
+                                openProgram={openProgram}
+                            />
+                        ))}
+                    </div>
                 </div>
-                {openProgramIds.map((programId) => (
-                    <Window
-                        key={`window-${programId}`}
-                        program={allPrograms.find(p => p.id === programId)!}
-                        isActive={activeProgramId === programId}
-                        focusProgram={focusProgram}
-                        closeProgram={closeProgram}
-                        desktopRef={desktopRef}
-                    />
-                ))}
-            </div>
-        </div>
+            </MobileView>
+        </>
     );
 };
 
