@@ -37,6 +37,7 @@ const AboutWebsite = () => {
                 <Text.Body><Link href='https://npmjs.com/package/react-soundplayer?activeTab=readme' openInNewTab>react-soundplayer</Link></Text.Body>
                 <Text.Body><Link href='https://npmjs.com/package/clsx?activeTab=readme' openInNewTab>clsx</Link></Text.Body>
                 <Text.Body><Link href='https://npmjs.com/package/tailwind-merge?activeTab=readme' openInNewTab>tailwind-merge</Link></Text.Body>
+                <Text.Body><Link href='https://npmjs.com/package/react-device-detect?activeTab=readme' openInNewTab>react-device-detect</Link></Text.Body>
             </div>
             <hr className='w-full' />
             <Text.H1>Services</Text.H1>
