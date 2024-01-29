@@ -1,4 +1,5 @@
 import Text from '@components/Text';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 const Welcome = () => {
     return (
@@ -8,6 +9,12 @@ const Welcome = () => {
             <Text.Body>Here, you can find information about my software projects, music, work experience, and more.</Text.Body>
             <Text.Body>To navigate around the site, you can treat it like a normal desktop environment. Feel free to double-click on a desktop icon to open a program, drag windows around, and explore!</Text.Body>
             <Text.Body>For the best experience, please use a Chromium-based browser.</Text.Body>
+            <MobileView>
+                <Text.Body>You are on mobile</Text.Body>
+            </MobileView>
+            <BrowserView>
+                <Text.Body>You are on desktop</Text.Body>
+            </BrowserView>
         </div>
     );
 };
