@@ -28,11 +28,17 @@ const DesktopIcon = ({ program, isActive, useSingleClick, focusIcon, openProgram
     return (
         <div className='flex items-center justify-center w-24 h-24'>
             <div
-                className='flex flex-col items-center justify-center select-none space-y-2'
+                className='flex flex-col items-center justify-center select-none space-y-2 group'
                 onClick={clickHandler}
             >
                 <Icon icon={program.icon!} shadow />
-                <Text.System className={cn('px-1 text-center', isActive && 'text-white bg-black')}>
+                <Text.System
+                    className={cn(
+                        'px-1 text-center',
+                        useSingleClick && 'group-active:text-white group-active:bg-black',
+                        isActive && 'text-white bg-black'
+                    )}
+                >
                     {program.name}
                 </Text.System>
             </div>
