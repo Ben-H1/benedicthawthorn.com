@@ -164,6 +164,8 @@ const DesktopEnvironment = () => {
 
     const allPrograms = [...programs, ...programs2];
 
+    const lastActiveProgram = allPrograms.find(p => p.id === openProgramIds.slice(-1)[0]);
+
     const desktopRef = useRef(null);
 
     return (
@@ -213,15 +215,21 @@ const DesktopEnvironment = () => {
                 </div>
             </BrowserView>
             <MobileView>
-                <div
-                    className='h-screen flex flex-col overflow-hidden relative'
-                    onMouseDown={focusNone}
-                >
+                <div className='h-screen flex flex-col overflow-hidden relative'>
                     <div
                         ref={desktopRef}
-                        className='bg-white flex-1 relative overflow-y-auto p-4'
+                        className='bg-gray-300 flex-1 relative'
                     >
-                        {allPrograms.find(p => p.id === openProgramIds.slice(-1)[0])?.content}
+                        {lastActiveProgram && (
+                            <Window
+                                program={lastActiveProgram}
+                                isActive
+                                mobile
+                                focusProgram={focusProgram}
+                                closeProgram={closeProgram}
+                                desktopRef={desktopRef}
+                            />
+                        )}
                     </div>
                     <div className='bg-white border-t border-black h-24 flex overflow-x-auto overflow-y-hidden px-2 space-x-2'>
                         {allPrograms.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (

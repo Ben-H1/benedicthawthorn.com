@@ -3,6 +3,7 @@ import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } fr
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
+import { cn } from '@util/css';
 
 export type Icon = {
     md: string;
@@ -27,9 +28,10 @@ type WindowProps = {
     focusProgram: (id: string) => number;
     closeProgram: (id: string) => void;
     desktopRef: RefObject<HTMLDivElement>;
+    mobile?: boolean;
 };
 
-const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: WindowProps) => {
+const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mobile }: WindowProps) => {
     const dragHandleClassName = 'dragHandle';
     const [zIndex, setZIndex] = useState(0);
     const [isMaximized, setIsMaximized] = useState(false);
@@ -129,9 +131,12 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const maximizedProps: any = {};
-    if (isMaximized) {
+    if (mobile || isMaximized) {
         maximizedProps.size = { width: '100%', height: '100%' };
         maximizedProps.position = { x: 0, y: 0 };
+
+        delete windowProps.maxWidth;
+        delete windowProps.maxHeight;
     }
 
     return (
@@ -143,22 +148,25 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef }: W
             onResizeStart={focus}
             onResizeStop={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
             onDragStop={(_, d) => setPosition({ x: d.x, y: d.y })}
-            enableResizing={!isMaximized}
-            disableDragging={_.has(program, 'props.position')}
+            enableResizing={!(mobile || isMaximized)}
+            disableDragging={_.has(program, 'props.position') || mobile || isMaximized}
             style={{ zIndex }}
             {...maximizedProps}
             {...windowProps}
         >
             <div
                 ref={windowRef}
-                className='h-full w-full flex flex-col border-black border drop-shadow-window'
+                className={cn(
+                    'h-full w-full flex flex-col',
+                    !mobile && 'border-black border drop-shadow-window'
+                )}
             >
                 <TitleBar
                     name={program.name}
                     icon={program.icon}
                     isActive={isActive}
-                    isMaximized={isMaximized}
-                    buttonSet={program.buttonSet}
+                    isMaximized={mobile || isMaximized}
+                    buttonSet={mobile ? ButtonSet.CLOSE : program.buttonSet}
                     buttonFunctions={buttonFunctions}
                     dragHandleClassName={dragHandleClassName}
                 />
