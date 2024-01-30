@@ -2,9 +2,16 @@ import Text from '@components/Text';
 import Button from '@components/form/Button';
 import TextArea from '@components/form/TextArea';
 import TextBox from '@components/form/TextBox';
+import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, useState } from 'react';
+import { MobileView } from 'react-device-detect';
 
-const EmailMe = () => {
+type EmailMeProps = {
+    openProgram: (id: string) => void;
+};
+
+const EmailMe = ({ openProgram }: EmailMeProps) => {
     const emailAddress = 'benedicthawthorn@gmail.com';
 
     const [subject, setSubject] = useState('');
@@ -12,6 +19,15 @@ const EmailMe = () => {
 
     return (
         <div className='w-full flex flex-col space-y-2 min-h-full'>
+            <MobileView>
+                <Button
+                    onClick={() => openProgram('contactMe')}
+                    className='flex items-center space-x-1 w-fit mb-2'
+                >
+                    <FontAwesomeIcon icon={faCaretLeft} />
+                    <p>Back</p>
+                </Button>
+            </MobileView>
             <div className='flex justify-center'>
                 <Button
                     onClick={() => navigator.clipboard.writeText(emailAddress)}

@@ -129,7 +129,7 @@ const DesktopEnvironment = () => {
         {
             id: 'emailMe',
             name: 'Email Me',
-            content: <EmailMe />,
+            content: <EmailMe openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             showOnDesktop: false,
             props: { minWidth: 266, minHeight: 434 }
