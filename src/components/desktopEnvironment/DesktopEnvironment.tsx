@@ -235,7 +235,7 @@ const DesktopEnvironment = () => {
                             />
                         )}
                     </div>
-                    <div className='bg-white border-t border-black h-24 flex overflow-x-auto overflow-y-hidden px-2 space-x-2'>
+                    <div className='bg-white border-t border-black h-fit flex overflow-x-auto scrollbar overflow-y-hidden px-2 space-x-2'>
                         {allPrograms.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
                             <DesktopIcon
                                 key={`desktopIcon-${program.id}`}
