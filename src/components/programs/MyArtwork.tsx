@@ -75,7 +75,7 @@ const MyArtwork = () => {
                 </div>
             </div>
             <hr className='mt-1 mb-3' />
-            <div className='h-[116px] shrink-0 scrollbar outline outline-1 overflow-x-scroll'>
+            <div className='h-fit shrink-0 scrollbar outline outline-1 overflow-x-auto'>
                 <div className='h-24 flex space-x-1 p-1'>
                     {artworks.map((artwork, i) => (
                         <img

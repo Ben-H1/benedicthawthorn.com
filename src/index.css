@@ -45,40 +45,40 @@
     border-right: 1px solid black;
 }
 
-.scrollbar::-webkit-scrollbar-button {
+.scrollbar::-webkit-scrollbar-button:single-button {
     height: 20px;
     width: 20px;
 }
 
-.scrollbar::-webkit-scrollbar-button:vertical {
+.scrollbar::-webkit-scrollbar-button:single-button:vertical {
     border-left: 1px solid black;
 }
 
-.scrollbar::-webkit-scrollbar-button:horizontal {
+.scrollbar::-webkit-scrollbar-button:single-button:horizontal {
     border-top: 1px solid black;
 }
 
-.scrollbar::-webkit-scrollbar-button {
+.scrollbar::-webkit-scrollbar-button:single-button:single-button {
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.scrollbar::-webkit-scrollbar-button:decrement:vertical {
+.scrollbar::-webkit-scrollbar-button:single-button:decrement:vertical {
     border-bottom: 1px solid black;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-up-bold-outline</title><path d="M 16 13 V 21 H 8 V 13 H 2 L 12 3 L 22 13 H 16 M 5 12 H 9 V 20 H 15 V 12 H 19 L 12 5 L 5 12 Z" /></svg>');
 }
 
-.scrollbar::-webkit-scrollbar-button:decrement:horizontal {
+.scrollbar::-webkit-scrollbar-button:single-button:decrement:horizontal {
     border-right: 1px solid black;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-left-bold-outline</title><path d="M 13 22 L 3 12 L 13 2 V 8 H 21 V 16 H 13 V 22 M 5 12 L 12 19 V 15 H 20 V 9 H 12 V 5 L 5 12 Z" /></svg>');
 }
 
-.scrollbar::-webkit-scrollbar-button:increment:vertical {
+.scrollbar::-webkit-scrollbar-button:single-button:increment:vertical {
     border-top: 1px solid black;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-down-bold-outline</title><path d="M 22 11 L 12 21 L 2 11 H 8 V 3 H 16 V 11 H 22 M 12 19 L 19 12 H 15 V 4 H 9 V 12 H 5 L 12 19 Z" /></svg>');
 }
 
-.scrollbar::-webkit-scrollbar-button:increment:horizontal {
+.scrollbar::-webkit-scrollbar-button:single-button:increment:horizontal {
     border-left: 1px solid black;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-bold-outline</title><path d="M 11 16 H 3 V 8 H 11 V 2 L 21 12 L 11 22 V 16 M 12 7 V 9 H 4 V 15 H 12 V 19 L 19 12 L 12 5 Z" /></svg>');
 }
