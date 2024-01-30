@@ -82,7 +82,7 @@ const MyArtwork = () => {
                             src={artwork.path}
                             onClick={() => setActiveArtworkIndex(i)}
                             className={cn(
-                                'h-full',
+                                'h-full last:pr-1',
                                 i === activeArtworkIndex && 'outline-blue-500 -outline-offset-4 outline-4 outline'
                             )}
                         />
