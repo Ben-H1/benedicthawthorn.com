@@ -9,7 +9,7 @@ import Welcome from '@components/programs/Welcome';
 import AboutWebsite from '@components/programs/AboutWebsite';
 import Clock from '@components/programs/Clock';
 import MyArtwork from '@components/programs/MyArtwork';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -44,7 +44,11 @@ const DesktopEnvironment = () => {
     };
 
     const closeProgram = (programId: string) => {
-        setOpenProgramIds(p => p.filter(id => id !== programId));
+        if (isMobile) {
+            setOpenProgramIds([]);
+        } else {
+            setOpenProgramIds(p => p.filter(id => id !== programId));
+        }
     };
 
     const focusNone = () => {
