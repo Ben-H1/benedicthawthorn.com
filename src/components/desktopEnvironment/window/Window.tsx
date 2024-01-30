@@ -3,7 +3,6 @@ import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } fr
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
-import { cn } from '@util/css';
 
 export type Icon = {
     md: string;
@@ -159,10 +158,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
         >
             <div
                 ref={windowRef}
-                className={cn(
-                    'h-full w-full flex flex-col',
-                    !mobile && 'border-black border drop-shadow-window'
-                )}
+                className='h-full w-full flex flex-col border-black border drop-shadow-window'
             >
                 <TitleBar
                     name={program.name}
