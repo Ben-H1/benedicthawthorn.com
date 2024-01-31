@@ -10,6 +10,7 @@ import AboutWebsite from '@components/programs/AboutWebsite';
 import Clock from '@components/programs/Clock';
 import MyArtwork from '@components/programs/MyArtwork';
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
+import AboutMe from '@components/programs/AboutMe';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -96,13 +97,16 @@ const DesktopEnvironment = () => {
         {
             id: 'aboutMe',
             name: 'About Me',
-            content: <UnderConstruction />,
+            content: <AboutMe />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 md: 'images/icons/book-help.png',
                 sm: 'images/icons/book-help-16.png'
             },
-            props: { enableResizing: false }
+            props: {
+                default: { width: 870, height: 800 },
+                minWidth: 790
+            }
         },
         {
             id: 'contactMe',
