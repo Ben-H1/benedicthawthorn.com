@@ -12,8 +12,8 @@ const Welcome = () => {
                 <Text.Body>For the best experience, please use a Chromium-based browser.</Text.Body>
             </BrowserView>
             <MobileView className='space-y-2'>
-                <Text.Body>To navigate around the site, you can treat tap on icons on the bottom bar. Feel free to explore!</Text.Body>
-                <Text.Body>This website is designed for desktop first and certain features are unavailable on mobile, so for the best experience, please use a desktop browser.</Text.Body>
+                <Text.Body>To navigate around the site, you can tap on icons on the bottom bar. Feel free to explore!</Text.Body>
+                <Text.Body>This website is designed for desktop first and certain features are unavailable on mobile. For the best experience, please use a desktop browser.</Text.Body>
             </MobileView>
         </div>
     );
