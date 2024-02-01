@@ -2,10 +2,12 @@ import Text from '@components/Text';
 import { withCustomAudio } from 'react-soundplayer/addons';
 import { PlayButton } from 'react-soundplayer/components';
 import Slider from '../form/Slider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMusic } from '@fortawesome/free-solid-svg-icons';
 
 type Mp3Track = {
     audioPath: string;
-    artworkPath: string;
+    artworkPath?: string;
     title: string;
     artist: string;
 };
@@ -35,14 +37,20 @@ const ActualPlayer = withCustomAudio((props: any) => {
     } = props;
 
     const currentTimeString = secondsToString(currentTime);
-    const durationString = secondsToString(Math.ceil(duration));
+    const durationString = secondsToString(duration);
 
     return (
         <div className='flex space-x-4 items-center'>
-            <img
-                src={track.artworkPath}
-                className='w-20 h-20'
-            />
+            {track.artworkPath ? (
+                <img
+                    src={track.artworkPath}
+                    className='w-20 h-20'
+                />
+            ) : (
+                <div className='w-20 h-20 border border-black flex items-center justify-center p-5'>
+                    <FontAwesomeIcon icon={faMusic} className='h-full w-full' />
+                </div>
+            )}
             <div className='flex-1 truncate'>
                 <Text.H3 className='truncate'>{track.title}</Text.H3>
                 <Text.Body className='text-sm mb-2 truncate'>{track.artist}</Text.Body>
@@ -50,7 +58,8 @@ const ActualPlayer = withCustomAudio((props: any) => {
                     <Text.System>{currentTimeString}</Text.System>
                     <Slider
                         min={0}
-                        max={Math.ceil(duration)}
+                        step={0.00001}
+                        max={duration}
                         value={currentTime}
                         onChange={(e) => soundCloudAudio.audio.currentTime = e.target.value}
                         className='w-full'
