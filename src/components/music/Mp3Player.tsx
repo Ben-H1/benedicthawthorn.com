@@ -68,7 +68,11 @@ const ActualPlayer = withCustomAudio((props: any) => {
                 </div>
             </div>
             <PlayButton
-                onTogglePlay={() => soundCloudAudio.audio.currentTime = currentTime}
+                onTogglePlay={() => {
+                    if (currentTime < duration) {
+                        soundCloudAudio.audio.currentTime = currentTime;
+                    }
+                }}
                 className='w-10 h-10 border border-black rounded-md p-2 outline-none'
                 {...props}
             />
