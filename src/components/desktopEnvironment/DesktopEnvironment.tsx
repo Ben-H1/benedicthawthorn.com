@@ -11,6 +11,7 @@ import Clock from '@components/programs/Clock';
 import MyArtwork from '@components/programs/MyArtwork';
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import AboutMe from '@components/programs/AboutMe';
+import MyMusic from '@components/programs/MyMusic';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -72,13 +73,15 @@ const DesktopEnvironment = () => {
         {
             id: 'myMusic',
             name: 'My Music',
-            content: <UnderConstruction />,
+            content: <MyMusic />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 md: 'images/icons/cd-music.png',
                 sm: 'images/icons/cd-music-16.png'
             },
-            props: { enableResizing: false }
+            props: {
+                minWidth: 400, minHeight: 138
+            }
         },
         {
             id: 'myArtwork',
