@@ -243,7 +243,7 @@ const DesktopEnvironment = () => {
                         )}
                     </div>
                     <div className='h-fit flex overflow-x-auto overflow-y-hidden px-2 space-x-2'>
-                        {allPrograms.filter(p => !!p.icon && (p.showOnDesktop ?? true)).map((program) => (
+                        {allPrograms.filter(p => !!p.icon && (p.showOnDesktop ?? true) && (p.showOnMobile ?? true)).map((program) => (
                             <DesktopIcon
                                 key={`desktopIcon-${program.id}`}
                                 program={program}
