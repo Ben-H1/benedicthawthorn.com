@@ -12,6 +12,7 @@ import MyArtwork from '@components/programs/MyArtwork';
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import AboutMe from '@components/programs/AboutMe';
 import MyMusic from '@components/programs/MyMusic';
+import Minesweeper from '@components/programs/Minesweeper';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -170,6 +171,17 @@ const DesktopEnvironment = () => {
                 default: { height: 106, width: 231 },
                 enableResizing: false
             }
+        },
+        {
+            id: 'minesweeper',
+            name: 'Minesweeper',
+            content: <Minesweeper />,
+            buttonSet: ButtonSet.CLOSE,
+            icon: {
+                md: 'images/icons/minesweeper.png',
+                sm: 'images/icons/minesweeper-16.png'
+            },
+            props: { enableResizing: false }
         }
     ];
 
