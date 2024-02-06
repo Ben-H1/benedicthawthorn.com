@@ -217,7 +217,7 @@ const Minesweeper = () => {
     
             setGrid(newGrid);
 
-            if (newGrid.flat().every(c => c.hasMine ? c.state === CellState.Flagged : true)) {
+            if (newGrid.flat().every(c => c.hasMine ? c.state === CellState.Flagged : c.state === CellState.Clicked)) {
                 setWin(true);
             }
         }
