@@ -9,7 +9,7 @@ const name = 'Benedict Hawthorn';
 
 const title = 'Software Engineer';
 
-const description = 'Hi, I\'m Ben! I\'m a software engineer with 2+ years\' experience using React, TypeScript and AWS to deliver innovative solutions. I\'m a strong, pro-active, and flexible team player with experience leading implementation of new features, giving presentations, and mentoring others.';
+const description = 'Hi, I\'m Ben! I\'m a software engineer with experience using React, TypeScript and AWS to deliver innovative solutions. I\'m a strong, pro-active, and flexible team player with experience leading implementation of new features, giving presentations, and mentoring others.';
 
 const programmingExperience = [
     { name: 'React', link: 'https://react.dev/'  },
