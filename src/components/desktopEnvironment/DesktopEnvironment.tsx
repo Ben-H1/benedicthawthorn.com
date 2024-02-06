@@ -181,7 +181,10 @@ const DesktopEnvironment = () => {
                 md: 'images/icons/minesweeper.png',
                 sm: 'images/icons/minesweeper-16.png'
             },
-            props: { enableResizing: false }
+            props: {
+                minWidth: 312,
+                enableResizing: false
+            }
         }
     ];
 

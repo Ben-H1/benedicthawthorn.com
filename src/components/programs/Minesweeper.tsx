@@ -131,6 +131,7 @@ const Minesweeper = () => {
 
     const [grid, setGrid] = useState(initialGrid);
     const [gameOver, setGameOver] = useState(false);
+    const [win, setWin] = useState(false);
     const [mobileClickType, setMobileClickType] = useState(ClickType.Left);
 
     const fillGrid = (grid: Cell[][], x: number, y: number) => {
@@ -155,10 +156,16 @@ const Minesweeper = () => {
         }
     };
 
+    const resetGame = () => {
+        setGrid(getInitialGrid());
+        setGameOver(false);
+        setWin(false);
+    };
+
     const handleCellClick = (data: Cell, clickType: ClickType) => {
-        if (!gameOver) {
+        if (!gameOver && !win) {
             const newData = JSON.parse(JSON.stringify(data));
-            const newGrid = JSON.parse(JSON.stringify(grid));
+            const newGrid: Cell[][] = JSON.parse(JSON.stringify(grid));
 
             const leftClick = () => {
                 if (data.state === CellState.Unclicked) {
@@ -209,28 +216,28 @@ const Minesweeper = () => {
             }
     
             setGrid(newGrid);
+
+            if (newGrid.flat().every(c => c.hasMine ? c.state === CellState.Flagged : true)) {
+                setWin(true);
+            }
         }
     };
 
     return (
         <div className='flex flex-col items-center space-y-4'>
-            <div className='w-full flex items-center justify-between'>
+            <div className='w-full flex items-center justify-between space-x-4'>
                 <div className='flex-1 flex items-center space-x-2'>
                     <FontAwesomeIcon icon={faFlag} />
                     <Text.H3>
                         {mineCount - grid.flat().filter(c => c.state === CellState.Flagged).length}
                     </Text.H3>
                 </div>
-                <Button
-                    onClick={() => {
-                        setGrid(getInitialGrid());
-                        setGameOver(false);
-                    }}
-                >
+                <Button onClick={resetGame}>
                     Reset
                 </Button>
                 <Text.H3 className='flex-1 text-right'>
-                    
+                    {win && 'Win'}
+                    {gameOver && 'Game over'}
                 </Text.H3>
             </div>
             <table>
