@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
 import _ from 'lodash';
 import { useState } from 'react';
+import { MobileView, isMobile } from 'react-device-detect';
 
 enum CellState {
     Clicked = 'clicked',
@@ -40,8 +41,8 @@ const TableCell = ({ data, handleCellClick }: TableCellProps) => {
                 handleCellClick(data, ClickType.Right);
             }}
             className={cn(
-                'border border-black w-5 h-5 hover:bg-gray-300 p-0',
-                data.state === CellState.Clicked && 'bg-gray-400 hover:bg-gray-500'
+                `border border-black w-5 h-5 ${isMobile ? 'active' : 'hover'}:bg-gray-300 p-0`,
+                data.state === CellState.Clicked && `bg-gray-400 ${isMobile ? 'active' : 'hover'}:bg-gray-500`
             )}
         >
             <div className='w-full h-full flex items-center justify-center relative'>
@@ -130,6 +131,7 @@ const Minesweeper = () => {
 
     const [grid, setGrid] = useState(initialGrid);
     const [gameOver, setGameOver] = useState(false);
+    const [mobileClickType, setMobileClickType] = useState(ClickType.Left);
 
     const fillGrid = (grid: Cell[][], x: number, y: number) => {
         const currentCell = grid?.[y]?.[x] ?? undefined;
@@ -157,8 +159,8 @@ const Minesweeper = () => {
         if (!gameOver) {
             const newData = JSON.parse(JSON.stringify(data));
             const newGrid = JSON.parse(JSON.stringify(grid));
-    
-            if (clickType === ClickType.Left) {
+
+            const leftClick = () => {
                 if (data.state !== CellState.Clicked) {
                     if (data.hasMine) {
                         newData.state = CellState.Clicked;
@@ -185,7 +187,9 @@ const Minesweeper = () => {
                         fillGrid(newGrid, data.x, data.y);
                     }
                 }
-            } else {
+            };
+
+            const rightClick = () => {
                 if (data.state === CellState.Unclicked) {
                     newData.state = CellState.Flagged;
                     newGrid[data.y][data.x] = newData;
@@ -196,6 +200,12 @@ const Minesweeper = () => {
                     newData.state = CellState.Unclicked;
                     newGrid[data.y][data.x] = newData;
                 }
+            };
+    
+            if (isMobile ? mobileClickType === ClickType.Left : clickType === ClickType.Left) {
+                leftClick();
+            } else {
+                rightClick();
             }
     
             setGrid(newGrid);
@@ -238,6 +248,28 @@ const Minesweeper = () => {
                     ))}
                 </tbody>
             </table>
+            <MobileView>
+                <div className='flex items-center justify-center space-x-4'>
+                    <Button
+                        onClick={() => setMobileClickType(ClickType.Left)}
+                        className={cn(
+                            'w-12 h-12',
+                            mobileClickType === ClickType.Left && 'bg-gray-300'
+                        )}
+                    >
+                        <FontAwesomeIcon icon={faBomb} size='2xl' />
+                    </Button>
+                    <Button
+                        onClick={() => setMobileClickType(ClickType.Right)}
+                        className={cn(
+                            'w-12 h-12',
+                            mobileClickType === ClickType.Right && 'bg-gray-300'
+                        )}
+                    >
+                        <FontAwesomeIcon icon={faFlag} size='2xl' />
+                    </Button>
+                </div>
+            </MobileView>
         </div>
     );
 };
