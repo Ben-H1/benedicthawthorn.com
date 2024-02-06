@@ -161,7 +161,7 @@ const Minesweeper = () => {
             const newGrid = JSON.parse(JSON.stringify(grid));
 
             const leftClick = () => {
-                if (data.state !== CellState.Clicked) {
+                if (data.state === CellState.Unclicked) {
                     if (data.hasMine) {
                         newData.state = CellState.Clicked;
                         newGrid[data.y][data.x] = newData;
