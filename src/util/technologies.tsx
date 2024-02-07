@@ -61,6 +61,10 @@ export const packages: Record<string, Technology> = {
         name: 'react-soundplayer',
         link: 'https://npmjs.com/package/react-soundplayer?activeTab=readme'
     },
+    reactTinyPopover: {
+        name: 'react-tiny-popover',
+        link: 'https://npmjs.com/package/react-tiny-popover?activeTab=readme'
+    },
     reactDeviceDetect: {
         name: 'react-device-detect',
         link: 'https://npmjs.com/package/react-device-detect?activeTab=readme'

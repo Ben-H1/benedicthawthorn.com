@@ -15,6 +15,7 @@ const AboutWebsite = () => {
     const pkgs = [
         packages.reactRnd,
         packages.reactSoundplayer,
+        packages.reactTinyPopover,
         packages.reactDeviceDetect,
         packages.fontAwesome,
         packages.clsx,
