@@ -130,6 +130,7 @@ const Minesweeper = () => {
     const initialGrid = getInitialGrid();
 
     const [grid, setGrid] = useState(initialGrid);
+    const [moveCount, setMoveCount] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [win, setWin] = useState(false);
     const [mobileClickType, setMobileClickType] = useState(ClickType.Left);
@@ -158,12 +159,21 @@ const Minesweeper = () => {
 
     const resetGame = () => {
         setGrid(getInitialGrid());
+        setMoveCount(0);
         setGameOver(false);
         setWin(false);
     };
 
     const handleCellClick = (data: Cell, clickType: ClickType) => {
         if (!gameOver && !win) {
+            if (moveCount === 0) {
+                if (data.hasMine) {
+                    console.log('MINE');
+                }
+            }
+
+            setMoveCount(p => p + 1);
+
             const newData = JSON.parse(JSON.stringify(data));
             const newGrid: Cell[][] = JSON.parse(JSON.stringify(grid));
 
@@ -214,12 +224,22 @@ const Minesweeper = () => {
             } else {
                 rightClick();
             }
-    
-            setGrid(newGrid);
+            
+            if (newGrid.flat().every(c => c.hasMine ? c.state !== CellState.Clicked : c.state === CellState.Clicked)) {
+                for (let y = 0; y < newGrid.length; y++) {
+                    for (let x = 0; x < newGrid[0].length; x++) {
+                        const cellNewData = JSON.parse(JSON.stringify(newGrid[y][x]));
+                        if (cellNewData.state === CellState.Unclicked) {
+                            cellNewData.state = CellState.Flagged;
+                        }
+                        newGrid[y][x] = cellNewData;
+                    }
+                }
 
-            if (newGrid.flat().every(c => c.hasMine ? c.state === CellState.Flagged : c.state === CellState.Clicked)) {
                 setWin(true);
             }
+
+            setGrid(newGrid);
         }
     };
 
