@@ -84,6 +84,30 @@ const Minesweeper = () => {
             initialGrid.push(newRow);
         }
 
+        return initialGrid;
+    };
+
+    const initialGrid = getInitialGrid();
+
+    const [grid, setGrid] = useState(initialGrid);
+    const [minesPlaced, setMinesPlaced] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
+    const [win, setWin] = useState(false);
+    const [mobileClickType, setMobileClickType] = useState(ClickType.Left);
+
+    const placeMines = (grid: Cell[][], x: number, y: number) => {
+        const invalidCoords = [
+            { x, y },
+            { x: x, y: y - 1 }, // up
+            { x: x, y: y + 1 }, // down
+            { x: x - 1, y: y }, // left
+            { x: x + 1, y: y }, // right
+            { x: x - 1, y: y - 1 }, // up-left
+            { x: x + 1, y: y - 1 }, // up-right
+            { x: x - 1, y: y + 1 }, // down-left
+            { x: x + 1, y: y + 1 }, // down-right
+        ].filter(c => _.inRange(c.x, gridWidth) && _.inRange(c.y, gridHeight));
+
         const mineCoords = [];
 
         for (let i = 0; i < mineCount; i++) {
@@ -92,7 +116,7 @@ const Minesweeper = () => {
 
             const newCoords = { x: randomX, y: randomY };
 
-            if (_.some(mineCoords, newCoords)) {
+            if (_.some([...invalidCoords, ...mineCoords], newCoords)) {
                 i--;
             } else {
                 mineCoords.push(newCoords);
@@ -101,39 +125,29 @@ const Minesweeper = () => {
         }
 
         mineCoords.forEach((coord) => {
-            initialGrid[coord.y][coord.x].hasMine = true;
+            grid[coord.y][coord.x].hasMine = true;
         });
 
         for (let y = 0; y < gridHeight; y++) {
             for (let x = 0; x < gridWidth; x++) {
-                const data = initialGrid[y][x];
+                const data = grid[y][x];
                 if (!data.hasMine) {
                     const adjacent = [
-                        initialGrid?.[y - 1]?.[x]?.hasMine ?? false, // up
-                        initialGrid?.[y + 1]?.[x]?.hasMine ?? false, // down
-                        initialGrid?.[y]?.[x - 1]?.hasMine ?? false, // left
-                        initialGrid?.[y]?.[x + 1]?.hasMine ?? false, // right
-                        initialGrid?.[y - 1]?.[x - 1]?.hasMine ?? false, // up-left
-                        initialGrid?.[y - 1]?.[x + 1]?.hasMine ?? false, // up-right
-                        initialGrid?.[y + 1]?.[x - 1]?.hasMine ?? false, // down-left
-                        initialGrid?.[y + 1]?.[x + 1]?.hasMine ?? false, // down-right
+                        grid?.[y - 1]?.[x]?.hasMine ?? false, // up
+                        grid?.[y + 1]?.[x]?.hasMine ?? false, // down
+                        grid?.[y]?.[x - 1]?.hasMine ?? false, // left
+                        grid?.[y]?.[x + 1]?.hasMine ?? false, // right
+                        grid?.[y - 1]?.[x - 1]?.hasMine ?? false, // up-left
+                        grid?.[y - 1]?.[x + 1]?.hasMine ?? false, // up-right
+                        grid?.[y + 1]?.[x - 1]?.hasMine ?? false, // down-left
+                        grid?.[y + 1]?.[x + 1]?.hasMine ?? false, // down-right
                     ];
 
                     data.adjacentCount = adjacent.filter(Boolean).length;
                 }
             }
         }
-
-        return initialGrid;
     };
-
-    const initialGrid = getInitialGrid();
-
-    const [grid, setGrid] = useState(initialGrid);
-    const [moveCount, setMoveCount] = useState(0);
-    const [gameOver, setGameOver] = useState(false);
-    const [win, setWin] = useState(false);
-    const [mobileClickType, setMobileClickType] = useState(ClickType.Left);
 
     const fillGrid = (grid: Cell[][], x: number, y: number) => {
         const currentCell = grid?.[y]?.[x] ?? undefined;
@@ -159,21 +173,13 @@ const Minesweeper = () => {
 
     const resetGame = () => {
         setGrid(getInitialGrid());
-        setMoveCount(0);
+        setMinesPlaced(false);
         setGameOver(false);
         setWin(false);
     };
 
     const handleCellClick = (data: Cell, clickType: ClickType) => {
         if (!gameOver && !win) {
-            if (moveCount === 0) {
-                if (data.hasMine || data.adjacentCount > 0) {
-                    console.log('MOVE');
-                }
-            }
-
-            setMoveCount(p => p + 1);
-
             const newData = JSON.parse(JSON.stringify(data));
             const newGrid: Cell[][] = JSON.parse(JSON.stringify(grid));
 
@@ -220,6 +226,11 @@ const Minesweeper = () => {
             };
     
             if (isMobile ? mobileClickType === ClickType.Left : clickType === ClickType.Left) {
+                if (!minesPlaced) {
+                    placeMines(newGrid, data.x, data.y);
+                    setMinesPlaced(true);
+                }
+
                 leftClick();
             } else {
                 rightClick();
