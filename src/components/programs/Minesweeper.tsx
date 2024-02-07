@@ -167,8 +167,8 @@ const Minesweeper = () => {
     const handleCellClick = (data: Cell, clickType: ClickType) => {
         if (!gameOver && !win) {
             if (moveCount === 0) {
-                if (data.hasMine) {
-                    console.log('MINE');
+                if (data.hasMine || data.adjacentCount > 0) {
+                    console.log('MOVE');
                 }
             }
 
