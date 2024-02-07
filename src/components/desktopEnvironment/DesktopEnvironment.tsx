@@ -1,18 +1,18 @@
-import UnderConstruction from '@components/programs/UnderConstruction';
+import AboutMe from '@components/programs/AboutMe';
+import AboutWebsite from '@components/programs/AboutWebsite';
+import Clock from '@components/programs/Clock';
+import ContactMe from '@components/programs/ContactMe';
+import EmailMe from '@components/programs/EmailMe';
+import Minesweeper from '@components/programs/Minesweeper';
+import MyArtwork from '@components/programs/MyArtwork';
+import MyMusic from '@components/programs/MyMusic';
+import MyProjects from '@components/programs/MyProjects';
+import Welcome from '@components/programs/Welcome';
 import { useRef, useState } from 'react';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
 import Window, { Program } from './window/Window';
-import ContactMe from '@components/programs/ContactMe';
-import EmailMe from '@components/programs/EmailMe';
-import Welcome from '@components/programs/Welcome';
-import AboutWebsite from '@components/programs/AboutWebsite';
-import Clock from '@components/programs/Clock';
-import MyArtwork from '@components/programs/MyArtwork';
-import { BrowserView, MobileView, isMobile } from 'react-device-detect';
-import AboutMe from '@components/programs/AboutMe';
-import MyMusic from '@components/programs/MyMusic';
-import Minesweeper from '@components/programs/Minesweeper';
 
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
@@ -63,13 +63,16 @@ const DesktopEnvironment = () => {
         {
             id: 'myProjects',
             name: 'My Projects',
-            content: <UnderConstruction />,
+            content: <MyProjects />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 md: 'images/icons/tools.png',
                 sm: 'images/icons/tools-16.png'
             },
-            props: { enableResizing: false }
+            props: {
+                default: { width: 748 },
+                minWidth: 619, minHeight: 300
+            }
         },
         {
             id: 'myMusic',
