@@ -13,12 +13,12 @@ export const technologies: Record<string, Technology> = {
     typeScript: {
         name: 'TypeScript',
         link: 'https://typescriptlang.org/',
-        iconPath: 'images/technologies/typescript.png'
+        iconPath: 'images/technologies/typeScript.png'
     },
     tailwindCss: {
         name: 'Tailwind CSS',
         link: 'https://tailwindcss.com/',
-        iconPath: 'images/technologies/tailwind.png'
+        iconPath: 'images/technologies/tailwindCss.png'
     },
     vite: {
         name: 'Vite',
@@ -28,7 +28,7 @@ export const technologies: Record<string, Technology> = {
     speedyWebCompiler: {
         name: 'Speedy Web Compiler',
         link: 'https://swc.rs/',
-        iconPath: 'images/technologies/swc.png'
+        iconPath: 'images/technologies/speedyWebCompiler.png'
     }
 };
 
@@ -67,7 +67,7 @@ export const services: Record<string, Technology> = {
     gitHub: {
         name: 'GitHub',
         link: 'https://github.com/',
-        iconPath: 'images/services/github.png'
+        iconPath: 'images/services/gitHub.png'
     },
     vercel: {
         name: 'Vercel',
