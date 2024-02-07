@@ -5,10 +5,20 @@ type Technology = {
 };
 
 export const technologies: Record<string, Technology> = {
+    html: {
+        name: 'HTML',
+        link: 'https://w3.org/html/',
+        iconPath: 'images/technologies/html.png'
+    },
     react: {
         name: 'React',
         link: 'https://react.dev/',
         iconPath: 'images/technologies/react.png'
+    },
+    javaScript: {
+        name: 'JavaScript',
+        link: 'https://javascript.com/',
+        iconPath: 'images/technologies/javaScript.png'
     },
     typeScript: {
         name: 'TypeScript',
@@ -19,6 +29,16 @@ export const technologies: Record<string, Technology> = {
         name: 'Tailwind CSS',
         link: 'https://tailwindcss.com/',
         iconPath: 'images/technologies/tailwindCss.png'
+    },
+    sass: {
+        name: 'Sass',
+        link: 'https://sass-lang.com/',
+        iconPath: 'images/technologies/sass.png'
+    },
+    css: {
+        name: 'CSS',
+        link: 'https://w3.org/Style/CSS/',
+        iconPath: 'images/technologies/css.png'
     },
     vite: {
         name: 'Vite',
