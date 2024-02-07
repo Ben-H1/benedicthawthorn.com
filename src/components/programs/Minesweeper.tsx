@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
 import _ from 'lodash';
 import { useState } from 'react';
-import { MobileView, isMobile } from 'react-device-detect';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 
 enum CellState {
     Clicked = 'clicked',
@@ -265,30 +265,32 @@ const Minesweeper = () => {
 
     return (
         <>
-            <MenuBar options={[
-                {
-                    name: 'Game',
-                    options: [
-                        {
-                            name: 'Difficulty',
-                            options: [
-                                {
-                                    name: 'Beginner',
-                                    onClick: () => resetGame(9, 9, 10)
-                                },
-                                {
-                                    name: 'Intermediate',
-                                    onClick: () => resetGame(16, 16, 40)
-                                },
-                                {
-                                    name: 'Expert',
-                                    onClick: () => resetGame(30, 16, 99)
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]} />
+            <BrowserView>
+                <MenuBar options={[
+                    {
+                        name: 'Game',
+                        options: [
+                            {
+                                name: 'Difficulty',
+                                options: [
+                                    {
+                                        name: 'Beginner',
+                                        onClick: () => resetGame(9, 9, 10)
+                                    },
+                                    {
+                                        name: 'Intermediate',
+                                        onClick: () => resetGame(16, 16, 40)
+                                    },
+                                    {
+                                        name: 'Expert',
+                                        onClick: () => resetGame(30, 16, 99)
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]} />
+            </BrowserView>
             <div className='flex flex-col items-center space-y-4'>
                 <div className='w-full flex items-center justify-between space-x-4'>
                     <div className='flex-1 flex items-center space-x-2'>
