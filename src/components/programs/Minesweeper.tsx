@@ -1,6 +1,6 @@
 import Text from '@components/Text';
 import Button from '@components/form/Button';
-import { faBomb, faFlag, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faBomb, faFlag, faQuestion, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@util/css';
 import _ from 'lodash';
@@ -29,10 +29,11 @@ type Cell = {
 
 type TableCellProps = {
     data: Cell;
+    gameOver: boolean;
     handleCellClick: (data: Cell, clickType: ClickType) => void;
 };
 
-const TableCell = ({ data, handleCellClick }: TableCellProps) => {
+const TableCell = ({ data, gameOver, handleCellClick }: TableCellProps) => {
     return (
         <td
             onClick={() => handleCellClick(data, ClickType.Left)}
@@ -57,6 +58,9 @@ const TableCell = ({ data, handleCellClick }: TableCellProps) => {
                 )}
                 {(data.state === CellState.Clicked && data.hasMine) && (
                     <FontAwesomeIcon icon={faBomb} size='sm' />
+                )}
+                {(gameOver && data.state === CellState.Flagged && !data.hasMine) && (
+                    <FontAwesomeIcon icon={faXmark} className='absolute w-full h-full text-red-600' />
                 )}
             </div>
         </td>
@@ -279,6 +283,7 @@ const Minesweeper = () => {
                                 <TableCell
                                     key={`grid-row-${y}-cell-${x}`}
                                     data={cell}
+                                    gameOver={gameOver}
                                     handleCellClick={handleCellClick}
                                 />
                             ))}
