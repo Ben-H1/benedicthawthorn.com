@@ -1,4 +1,5 @@
 import Text from '@components/Text';
+import MenuBar from '@components/desktopEnvironment/window/MenuBar';
 import Button from '@components/form/Button';
 import { faBomb, faFlag, faQuestion, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,17 +68,17 @@ const TableCell = ({ data, gameOver, handleCellClick }: TableCellProps) => {
     );
 };
 
-const gridWidth = 10;
-const gridHeight = 10;
-const mineCount = 10;
-
 const Minesweeper = () => {
-    const getInitialGrid = () => {
+    const [gridWidth, setGridWidth] = useState(9);
+    const [gridHeight, setGridHeight] = useState(9);
+    const [mineCount, setMineCount] = useState(10);
+
+    const getInitialGrid = (newGridWidth?: number, newGridHeight?: number) => {
         const initialGrid: Cell[][] = [];
 
-        for (let y = 0; y < gridHeight; y++) {
+        for (let y = 0; y < (newGridHeight ?? gridHeight); y++) {
             const newRow = [];
-            for (let x = 0; x < gridWidth; x++) {
+            for (let x = 0; x < (newGridWidth ?? gridWidth); x++) {
                 newRow.push({
                     state: CellState.Unclicked,
                     adjacentCount: 0,
@@ -91,7 +92,7 @@ const Minesweeper = () => {
         return initialGrid;
     };
 
-    const initialGrid = getInitialGrid();
+    const initialGrid = getInitialGrid(gridWidth, gridHeight);
 
     const [grid, setGrid] = useState(initialGrid);
     const [minesPlaced, setMinesPlaced] = useState(false);
@@ -175,8 +176,12 @@ const Minesweeper = () => {
         }
     };
 
-    const resetGame = () => {
-        setGrid(getInitialGrid());
+    const resetGame = (gridWidth?: number, gridHeight?: number, mineCount?: number) => {
+        gridWidth && setGridWidth(gridWidth);
+        gridHeight && setGridHeight(gridHeight);
+        mineCount && setMineCount(mineCount);
+
+        setGrid(getInitialGrid(gridWidth, gridHeight));
         setMinesPlaced(false);
         setGameOver(false);
         setWin(false);
@@ -259,61 +264,87 @@ const Minesweeper = () => {
     };
 
     return (
-        <div className='flex flex-col items-center space-y-4'>
-            <div className='w-full flex items-center justify-between space-x-4'>
-                <div className='flex-1 flex items-center space-x-2'>
-                    <FontAwesomeIcon icon={faFlag} />
-                    <Text.H3>
-                        {mineCount - grid.flat().filter(c => c.state === CellState.Flagged).length}
+        <>
+            <MenuBar options={[
+                {
+                    name: 'Game',
+                    options: [
+                        {
+                            name: 'Difficulty',
+                            options: [
+                                {
+                                    name: 'Beginner',
+                                    onClick: () => resetGame(9, 9, 10)
+                                },
+                                {
+                                    name: 'Intermediate',
+                                    onClick: () => resetGame(16, 16, 40)
+                                },
+                                {
+                                    name: 'Expert',
+                                    onClick: () => resetGame(30, 16, 99)
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]} />
+            <div className='flex flex-col items-center space-y-4'>
+                <div className='w-full flex items-center justify-between space-x-4'>
+                    <div className='flex-1 flex items-center space-x-2'>
+                        <FontAwesomeIcon icon={faFlag} />
+                        <Text.H3>
+                            {mineCount - grid.flat().filter(c => c.state === CellState.Flagged).length}
+                        </Text.H3>
+                    </div>
+                    <Button onClick={() => resetGame()}>
+                        Reset
+                    </Button>
+                    <Text.H3 className='flex-1 text-right'>
+                        {win && 'Win'}
+                        {gameOver && 'Game over'}
                     </Text.H3>
                 </div>
-                <Button onClick={resetGame}>
-                    Reset
-                </Button>
-                <Text.H3 className='flex-1 text-right'>
-                    {win && 'Win'}
-                    {gameOver && 'Game over'}
-                </Text.H3>
+                <table>
+                    <tbody>
+                        {grid.map((row, y) => (
+                            <tr key={`grid-row-${y}`}>
+                                {row.map((cell, x) => (
+                                    <TableCell
+                                        key={`grid-row-${y}-cell-${x}`}
+                                        data={cell}
+                                        gameOver={gameOver}
+                                        handleCellClick={handleCellClick}
+                                    />
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <MobileView>
+                    <div className='flex items-center justify-center space-x-4'>
+                        <Button
+                            onClick={() => setMobileClickType(ClickType.Left)}
+                            className={cn(
+                                'w-12 h-12',
+                                mobileClickType === ClickType.Left && 'bg-gray-300'
+                            )}
+                        >
+                            <FontAwesomeIcon icon={faBomb} size='2xl' />
+                        </Button>
+                        <Button
+                            onClick={() => setMobileClickType(ClickType.Right)}
+                            className={cn(
+                                'w-12 h-12',
+                                mobileClickType === ClickType.Right && 'bg-gray-300'
+                            )}
+                        >
+                            <FontAwesomeIcon icon={faFlag} size='2xl' />
+                        </Button>
+                    </div>
+                </MobileView>
             </div>
-            <table>
-                <tbody>
-                    {grid.map((row, y) => (
-                        <tr key={`grid-row-${y}`}>
-                            {row.map((cell, x) => (
-                                <TableCell
-                                    key={`grid-row-${y}-cell-${x}`}
-                                    data={cell}
-                                    gameOver={gameOver}
-                                    handleCellClick={handleCellClick}
-                                />
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <MobileView>
-                <div className='flex items-center justify-center space-x-4'>
-                    <Button
-                        onClick={() => setMobileClickType(ClickType.Left)}
-                        className={cn(
-                            'w-12 h-12',
-                            mobileClickType === ClickType.Left && 'bg-gray-300'
-                        )}
-                    >
-                        <FontAwesomeIcon icon={faBomb} size='2xl' />
-                    </Button>
-                    <Button
-                        onClick={() => setMobileClickType(ClickType.Right)}
-                        className={cn(
-                            'w-12 h-12',
-                            mobileClickType === ClickType.Right && 'bg-gray-300'
-                        )}
-                    >
-                        <FontAwesomeIcon icon={faFlag} size='2xl' />
-                    </Button>
-                </div>
-            </MobileView>
-        </div>
+        </>
     );
 };
 
