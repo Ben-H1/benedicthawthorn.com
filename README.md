@@ -14,7 +14,7 @@
 <p align='center'>My personal website, containing information about my projects, music, artwork, and work experience, plus some other fun features.</p>
 
 <p align='center'>
-    <img valign='middle' style='border: none' src='public/images/technologies/react.png' width='32' />
+    <img valign='middle' src='public/images/technologies/react.png' width='32' />
     <img valign='middle' src='public/images/technologies/typeScript.png' height='32' />
     <img valign='middle' src='public/images/technologies/tailwindCss.png' width='32' />
     <img valign='middle' src='public/images/technologies/vite.png' height='32' />
