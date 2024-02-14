@@ -30,7 +30,9 @@ const projects = [
             technologies.speedyWebCompiler
         ],
         screenshot: 'images/projects/adventOfCode.png',
-        gitHubLink: 'https://github.com/Ben-H1/Advent-of-Code'
+        gitHubLink: 'https://github.com/Ben-H1/Advent-of-Code',
+        link: 'https://advent-of-code-benedict-hawthorn.vercel.app',
+        program: 'adventOfCode'
     },
     {
         name: 'Interactive Genetic Algorithms',
@@ -42,7 +44,7 @@ const projects = [
         ],
         screenshot: 'images/projects/interactiveGeneticAlgorithms.png',
         gitHubLink: 'https://github.com/Ben-H1/Interactive-Genetic-Algorithms',
-        link: 'https://interactive-genetic-algorithms.netlify.app/',
+        link: 'https://interactive-genetic-algorithms.netlify.app',
         program: 'interactiveGeneticAlgorithms'
     }
 ];
@@ -78,6 +80,9 @@ const MyProjectsDesktop = ({ openProgram }: MyProjectsProps) => {
                                     <Text.Body className='space-x-4 text-right'>
                                         {project.gitHubLink && (
                                             <Link href={project.gitHubLink} openInNewTab>GitHub Repo</Link>
+                                        )}
+                                        {(project.link && !project.program) && (
+                                            <Link href={project.link} openInNewTab>View Project</Link>
                                         )}
                                         {project.program && (
                                             <Button onClick={() => openProgram(project.program)}>View Project</Button>

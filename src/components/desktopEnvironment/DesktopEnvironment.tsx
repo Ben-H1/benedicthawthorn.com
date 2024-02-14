@@ -76,9 +76,23 @@ const DesktopEnvironment = () => {
             }
         },
         {
+            id: 'adventOfCode',
+            name: 'Advent of Code',
+            content: <IFrameTemplate src='https://advent-of-code-benedict-hawthorn.vercel.app' />,
+            buttonSet: ButtonSet.MAXCLOSE,
+            icon: {
+                md: 'images/icons/world.png',
+                sm: 'images/icons/world-16.png'
+            },
+            showOnDesktop: false,
+            props: {
+                default: { width: 800, height: 500 }
+            }
+        },
+        {
             id: 'interactiveGeneticAlgorithms',
             name: 'Interactive Genetic Algorithms',
-            content: <IFrameTemplate src='https://interactive-genetic-algorithms.netlify.app/' />,
+            content: <IFrameTemplate src='https://interactive-genetic-algorithms.netlify.app' />,
             buttonSet: ButtonSet.MAXCLOSE,
             icon: {
                 md: 'images/icons/world.png',
