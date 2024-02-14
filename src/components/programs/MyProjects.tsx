@@ -84,6 +84,10 @@ const MyProjectsDesktop = () => {
                     {i < projects.length - 1 && <hr />}
                 </>
             ))}
+            <hr />
+            <div className='flex justify-center'>
+                <Text.Body><Link href='https://github.com/Ben-H1' openInNewTab>More on GitHub</Link></Text.Body>
+            </div>
         </div>
     );
 };
@@ -121,6 +125,10 @@ const MyProjectsMobile = () => {
                     {i < projects.length - 1 && <hr />}
                 </>
             ))}
+            <hr />
+            <div className='flex justify-center'>
+                <Text.Body><Link href='https://github.com/Ben-H1' openInNewTab>More on GitHub</Link></Text.Body>
+            </div>
         </div>
     );
 };
