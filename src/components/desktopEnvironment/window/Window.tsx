@@ -35,7 +35,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
     const dragHandleClassName = 'dragHandle';
     const [zIndex, setZIndex] = useState(0);
     const [isMaximized, setIsMaximized] = useState(false);
-    const [position, setPosition] = useState<{ x: number, y: number }>();
+    const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
 
     const rndRef = useRef<Rnd>(null);
     const windowRef = useRef<HTMLDivElement>(null);
@@ -149,11 +149,12 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
             ref={rndRef}
             onMouseDown={focus}
             onResizeStart={focus}
-            onResizeStop={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
-            onDragStop={(_, d) => setPosition({ x: d.x, y: d.y })}
+            onResize={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
+            onDrag={(_, d) => setPosition({ x: d.x, y: d.y })}
             enableResizing={!(mobile || isMaximized)}
             disableDragging={_.has(program, 'props.position') || mobile || isMaximized}
             style={{ zIndex }}
+            position={position}
             {...maximizedProps}
             {...windowProps}
         >
