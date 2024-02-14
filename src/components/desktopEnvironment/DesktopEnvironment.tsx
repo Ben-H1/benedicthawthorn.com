@@ -8,6 +8,7 @@ import MyArtwork from '@components/programs/MyArtwork';
 import MyMusic from '@components/programs/MyMusic';
 import MyProjects from '@components/programs/MyProjects';
 import Welcome from '@components/programs/Welcome';
+import IFrameTemplate from '@components/templates/IFrameTemplate';
 import { useRef, useState } from 'react';
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import DesktopIcon from './DesktopIcon';
@@ -63,7 +64,7 @@ const DesktopEnvironment = () => {
         {
             id: 'myProjects',
             name: 'My Projects',
-            content: <MyProjects />,
+            content: <MyProjects openProgram={openProgram} />,
             buttonSet: ButtonSet.CLOSE,
             icon: {
                 md: 'images/icons/tools.png',
@@ -72,6 +73,20 @@ const DesktopEnvironment = () => {
             props: {
                 default: { width: 748 },
                 minWidth: 619, minHeight: 300
+            }
+        },
+        {
+            id: 'interactiveGeneticAlgorithms',
+            name: 'Interactive Genetic Algorithms',
+            content: <IFrameTemplate src='https://interactive-genetic-algorithms.netlify.app/' />,
+            buttonSet: ButtonSet.MAXCLOSE,
+            icon: {
+                md: 'images/icons/world.png',
+                sm: 'images/icons/world-16.png'
+            },
+            showOnDesktop: false,
+            props: {
+                default: { width: 800, height: 500 }
             }
         },
         {

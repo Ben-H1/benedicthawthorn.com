@@ -1,5 +1,6 @@
 import Icon from '@components/Icon';
 import Text from '@components/Text';
+import Button from '@components/form/Button';
 import Link from '@components/text/Link';
 import { technologies } from '@util/technologies';
 import { isMobile } from 'react-device-detect';
@@ -41,11 +42,16 @@ const projects = [
         ],
         screenshot: 'images/projects/interactiveGeneticAlgorithms.png',
         gitHubLink: 'https://github.com/Ben-H1/Interactive-Genetic-Algorithms',
-        link: 'https://interactive-genetic-algorithms.netlify.app/'
+        link: 'https://interactive-genetic-algorithms.netlify.app/',
+        program: 'interactiveGeneticAlgorithms'
     }
 ];
 
-const MyProjectsDesktop = () => {
+type MyProjectsProps = {
+    openProgram: (id: string) => void;
+};
+
+const MyProjectsDesktop = ({ openProgram }: MyProjectsProps) => {
     return (
         <div className='flex flex-col space-y-4'>
             {projects.map((project, i) => (
@@ -73,8 +79,8 @@ const MyProjectsDesktop = () => {
                                         {project.gitHubLink && (
                                             <Link href={project.gitHubLink} openInNewTab>GitHub Repo</Link>
                                         )}
-                                        {project.link && (
-                                            <Link href={project.link} openInNewTab>View Project</Link>
+                                        {project.program && (
+                                            <Button onClick={() => openProgram(project.program)}>View Project</Button>
                                         )}
                                     </Text.Body>
                                 </div>
@@ -133,7 +139,7 @@ const MyProjectsMobile = () => {
     );
 };
 
-const MyProjects = () => {
+const MyProjects = ({ openProgram }: MyProjectsProps) => {
     if (isMobile) {
         return (
             <MyProjectsMobile />
@@ -141,7 +147,7 @@ const MyProjects = () => {
     }
 
     return (
-        <MyProjectsDesktop />
+        <MyProjectsDesktop openProgram={openProgram} />
     );
 };
 
