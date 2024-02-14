@@ -127,7 +127,7 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
 
     const windowProps = program.props ?? {};
     windowProps.minWidth = Math.max(150, windowProps.minWidth ?? 0);
-    windowProps.minHeight = Math.max(42, windowProps.minHeight ?? 0);
+    windowProps.minHeight = Math.max(58, windowProps.minHeight ?? 0);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const maximizedProps: any = {};
