@@ -3,6 +3,11 @@ import Mp3Player from '@components/music/Mp3Player';
 const MyMusic = () => {
     const tracks = [
         {
+            audioPath: 'music/live/Play That Funky Music.mp3',
+            title: 'Play That Funky Music',
+            artist: 'SquaredUp Band'
+        },
+        {
             audioPath: 'music/ukulele/Just the Two of Us.mp3',
             title: 'Just the Two of Us (Ukulele Cover)',
             artist: 'Benedict Hawthorn'
