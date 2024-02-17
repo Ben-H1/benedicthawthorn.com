@@ -22,7 +22,7 @@ const BarButton = forwardRef<HTMLDivElement, BarButtonProps>(({ option, right }:
     return (
         <Popover
             isOpen={isOpen}
-            onClickOutside={() => !right && setIsOpen(false)}
+            onClickOutside={() => setIsOpen(false)}
             positions={[right ? 'right' : 'bottom']}
             align='start'
             containerStyle={{ zIndex: '9999999999' }}
