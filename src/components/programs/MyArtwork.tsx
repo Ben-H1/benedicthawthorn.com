@@ -16,9 +16,34 @@ const MyArtwork = () => {
 
     const artworks: Artwork[] = [
         {
+            title: 'Ultra Instinct Goku',
+            description: 'A drawing of Ultra Instinct Goku from Dragon Ball Super, sketched using MediBang Jump Paint and finished using Paint Tool Sai.',
+            path: 'images/artwork/Ultra Instinct Goku.png'
+        },
+        {
+            title: 'Super Saiyan Vegeta',
+            description: 'A re-draw of a scene from Dragon Ball Z, done using MediBang Jump Paint.',
+            path: 'images/artwork/Super Saiyan Vegeta.png'
+        },
+        {
+            title: 'Super Saiyan God Vegeta',
+            description: 'A quick drawing of Super Saiyan God Vegeta from Dragon Ball Super, done using MediBang Jump Paint.',
+            path: 'images/artwork/Super Saiyan God Vegeta.png'
+        },
+        {
             title: 'Gamma 2',
             description: 'A quick drawing of Gamma 2 from Dragon Ball Super: Super Hero, done using MediBang Jump Paint.',
             path: 'images/artwork/Gamma 2.png'
+        },
+        {
+            title: 'Vegito',
+            description: 'A quick drawing of Vegito from Dragon Ball Z/Super.',
+            path: 'images/artwork/Vegito.png'
+        },
+        {
+            title: 'Super Saiyan Blue Gogeta',
+            description: 'A quick drawing of Super Saiyan Blue Gogeta from Dragon Ball Super: Broly, done using MediBang Jump Paint.',
+            path: 'images/artwork/Super Saiyan Blue Gogeta.png'
         }
     ];
 
