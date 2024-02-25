@@ -120,7 +120,7 @@ const DesktopEnvironment = () => {
             id: 'myArtwork',
             name: 'My Artwork',
             content: <MyArtwork />,
-            buttonSet: ButtonSet.CLOSE,
+            buttonSet: ButtonSet.MAXCLOSE,
             icon: {
                 md: 'images/icons/paint.png',
                 sm: 'images/icons/paint-16.png'
