@@ -17,6 +17,7 @@ export type Program = {
     icon?: Icon;
     showOnDesktop?: boolean;
     showOnMobile?: boolean;
+    preventInitial?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: Record<string, any>;
 };
