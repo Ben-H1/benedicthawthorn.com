@@ -222,7 +222,14 @@ const DesktopEnvironment = () => {
     const allPrograms = [...programs, ...programs2];
 
     useEffect(() => {
-        openProgram('welcome');
+        const initialProgramId = window.location.href.split('/').slice(-1)[0];
+        const initialProgram = allPrograms.find(p => p.id === initialProgramId);
+
+        if (initialProgram && !initialProgram.preventInitial) {
+            openProgram(initialProgramId);
+        } else {
+            openProgram('welcome');
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
