@@ -223,10 +223,10 @@ const DesktopEnvironment = () => {
 
     useEffect(() => {
         const initialProgramId = window.location.href.split('/').slice(-1)[0];
-        const initialProgram = allPrograms.find(p => p.id === initialProgramId);
+        const initialProgram = allPrograms.find(p => p.id.toLowerCase() === initialProgramId.toLowerCase());
 
         if (initialProgram && !initialProgram.preventInitial) {
-            openProgram(initialProgramId);
+            openProgram(initialProgram.id);
         } else {
             openProgram('welcome');
         }
