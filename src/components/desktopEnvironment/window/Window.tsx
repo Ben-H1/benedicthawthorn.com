@@ -3,6 +3,7 @@ import { ReactNode, RefObject, useEffect, useLayoutEffect, useRef, useState } fr
 import { Rnd } from 'react-rnd';
 import TitleBar from './TitleBar';
 import { ButtonFunctions, ButtonSet } from './TitleBarButtons';
+import { cn } from '@util/css';
 
 export type Icon = {
     md: string;
@@ -36,6 +37,8 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
     const [zIndex, setZIndex] = useState(0);
     const [isMaximized, setIsMaximized] = useState(false);
     const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
+
+    const [draggingOrResizing, setDraggingOrResizing] = useState(true);
 
     const rndRef = useRef<Rnd>(null);
     const windowRef = useRef<HTMLDivElement>(null);
@@ -125,12 +128,19 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
     return (
         <Rnd
             dragHandleClassName={dragHandleClassName}
+            className={cn(!draggingOrResizing && 'transition-[transform,width,height]')}
             bounds='parent'
             ref={rndRef}
             onMouseDown={focus}
-            onResizeStart={focus}
             onResize={(...[,,,, d]) => setPosition({ x: d.x, y: d.y })}
+            onResizeStart={() => {
+                focus();
+                setDraggingOrResizing(true);
+            }}
+            onResizeStop={() => setDraggingOrResizing(false)}
             onDrag={(_, d) => setPosition({ x: d.x, y: d.y })}
+            onDragStart={() => setDraggingOrResizing(true)}
+            onDragStop={() => setDraggingOrResizing(false)}
             enableResizing={!(mobile || isMaximized)}
             disableDragging={_.has(program, 'props.position') || mobile || isMaximized}
             style={{ zIndex }}
