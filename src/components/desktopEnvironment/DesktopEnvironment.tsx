@@ -126,7 +126,7 @@ const DesktopEnvironment = () => {
                 sm: 'images/icons/paint-16.png'
             },
             props: {
-                default: { width: 500, height: 500 },
+                default: { width: 600, height: 500 },
                 minWidth: 600, minHeight: 500
             }
         },
