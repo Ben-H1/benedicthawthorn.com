@@ -9,7 +9,7 @@ import MyMusic from '@components/programs/MyMusic';
 import MyProjects from '@components/programs/MyProjects';
 import Welcome from '@components/programs/Welcome';
 import IFrameTemplate from '@components/templates/IFrameTemplate';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import DesktopIcon from './DesktopIcon';
 import { ButtonSet } from './window/TitleBarButtons';
@@ -18,7 +18,7 @@ import Window, { Program } from './window/Window';
 const DesktopEnvironment = () => {
     const [activeIconId, setActiveIconId] = useState<string>('');
     const [activeProgramId, setActiveProgramId] = useState<string>('');
-    const [openProgramIds, setOpenProgramIds] = useState<string[]>(['welcome']);
+    const [openProgramIds, setOpenProgramIds] = useState<string[]>([]);
     const [highestZIndex, setHighestZIndex] = useState<number>(0);
 
     const focusIcon = (programId: string) => {
@@ -180,7 +180,6 @@ const DesktopEnvironment = () => {
             content: <Welcome />,
             buttonSet: ButtonSet.CLOSE,
             showOnDesktop: false,
-            centerWithUseEffect: true,
             props: {
                 default: { width: 525, height: 362 },
                 minWidth: 400, minHeight: 250,
@@ -221,6 +220,11 @@ const DesktopEnvironment = () => {
     ];
 
     const allPrograms = [...programs, ...programs2];
+
+    useEffect(() => {
+        openProgram('welcome');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const lastActiveProgram = allPrograms.find(p => p.id === openProgramIds.slice(-1)[0]);
 
