@@ -92,6 +92,9 @@ const Window = ({ program, isActive, focusProgram, closeProgram, desktopRef, mob
     useEffect(focus, []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => setDraggingOrResizing(false), []);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => focus(undefined, isActive), [isActive]);
 
     const buttonFunctions: ButtonFunctions = {
