@@ -44,14 +44,14 @@ const programmingExperience = [
 
 const workExperience = [
     {
-        title: 'Junior Software Engineer',
+        title: 'Software Engineer',
         company: 'SquaredUp',
         timespan: 'September 2022 - January 2024',
         technologies: 'React, TypeScript, Tailwind CSS, AWS, Azure, Jest, Storybook',
         description: 'Development, integration, and maintenance of application features for a SaaS cloud data visualisation web application, working in a small team and an Agile environment with Jira and Azure DevOps.'
     },
     {
-        title: 'Intern Software Engineer',
+        title: 'Software Engineer',
         company: 'SquaredUp',
         timespan: 'September 2021 - September 2022',
         technologies: 'JavaScript, AWS Serverless, REST APIs',
