@@ -44,6 +44,13 @@ const programmingExperience = [
 
 const workExperience = [
     {
+        title: 'Software Developer',
+        company: 'Simplyhealth',
+        timespan: 'March 2024 - Present',
+        technologies: '',
+        description: ''
+    },
+    {
         title: 'Software Engineer',
         company: 'SquaredUp',
         timespan: 'September 2022 - January 2024',
